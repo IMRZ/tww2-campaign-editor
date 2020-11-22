@@ -1,0 +1,70 @@
+import React, { useMemo } from 'react';
+import Map from './map/Map';
+import MapImageLayer from './map/MapImageLayer';
+
+import LordMapLayer from './lord/LordMapLayer';
+import HeroMapLayer from './hero/HeroMapLayer';
+import SettlementMapLayer from './region/SettlementMapLayer';
+
+import { useQueryInterval, useQueryData } from '../use/util';
+import { useCampaignMap } from '../use/common';
+
+import ToggleShroudButton from './global/ToggleShroudButton';
+import LordDialogCreate from './lord/LordDialogCreate';
+import HeroDialogCreate from './hero/HeroDialogCreate';
+
+function Main() {
+  const campaign = useCampaignMap();
+  const { regions, regionOwners, activeCharacters } = useMain();
+
+  return (
+    <>
+      <Map config={campaign.image}>
+        <MapImageLayer image={campaign.image.map} />
+        <LordMapLayer characters={activeCharacters.lords} />
+        <HeroMapLayer characters={activeCharacters.heroes} />
+        <SettlementMapLayer regions={regions} regionOwners={regionOwners} />
+        <ToggleShroudButton />
+      </Map>
+
+      <LordDialogCreate />
+      <HeroDialogCreate />
+    </>
+  );
+}
+
+export function useMain() {
+  const regionsQuery = useQueryData('get_regions_init', []);
+  const regionOwnersQuery = useQueryInterval('get_regions', {});
+  const charatersQuery = useQueryInterval('get_active_characters', []);
+
+  const activeCharacters = useMemo(() => {
+    return charatersQuery.data.reduce(
+      (accumulator: any, char: any) => {
+        if (char.type === 'general') {
+          accumulator.lords.push(char);
+        } else {
+          accumulator.heroes.push(char);
+        }
+
+        return accumulator;
+      },
+      {
+        lords: [],
+        heroes: [],
+      }
+    );
+  }, [charatersQuery.data]);
+
+  const regions = useMemo(() => {
+    return Object.values(regionsQuery.data);
+  }, [regionsQuery.data]);
+
+  return {
+    regions,
+    regionOwners: regionOwnersQuery.data,
+    activeCharacters,
+  };
+}
+
+export default Main;
