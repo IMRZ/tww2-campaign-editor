@@ -13,7 +13,7 @@ const NotSupported = () => {
         rel="noopener noreferrer"
         target="_blank"
       >
-        Click here for a list of supported browser
+        Click here for a list of supported browsers
       </Link>
     </Box>
   );

@@ -6,6 +6,7 @@ import {
   ListItem,
   ListItemText,
   ListItemIcon,
+  Divider,
 } from '@material-ui/core';
 import { Transform } from '@material-ui/icons';
 import RegionTransferDialog from './RegionTransferDialog';
@@ -52,6 +53,7 @@ const SettlementInfoPanel = (props: any) => {
           </ListItem>
         ))}
       </List>
+      <Divider />
       <List subheader={<ListSubheader disableSticky>Actions</ListSubheader>}>
         {actions.map(([icon, label, action]) => (
           <ListItem key={label} button onClick={action}>

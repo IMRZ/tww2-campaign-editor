@@ -6,6 +6,7 @@ import {
   ListItem,
   ListItemText,
   ListItemIcon,
+  Divider,
 } from '@material-ui/core';
 import { Delete, SettingsBackupRestore, ControlCamera } from '@material-ui/icons';
 import { useCommand } from '../../use/command';
@@ -89,6 +90,7 @@ const HeroInfoPanel = (props: any) => {
           </ListItem>
         ))}
       </List>
+      <Divider />
       <List subheader={<ListSubheader disableSticky>Actions</ListSubheader>}>
         {actions.map(([label, icon, onClick]) => (
           <ListItem key={label} button onClick={onClick}>

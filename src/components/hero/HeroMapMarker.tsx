@@ -86,7 +86,7 @@ const Marker = React.memo((props: any) => {
   const flag = assets[flagPath]?.default;
 
   return (
-    <img src={flag} alt="" className={classes.marker} onClick={onClick} />
+    <img src={flag} alt="" className={classes.marker} onClick={onClick} onContextMenu={(e) => e.preventDefault()} />
   );
 });
 

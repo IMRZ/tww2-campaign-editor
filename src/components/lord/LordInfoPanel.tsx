@@ -6,6 +6,7 @@ import {
   ListItem,
   ListItemText,
   ListItemIcon,
+  Divider,
 } from '@material-ui/core';
 import { Delete, SettingsBackupRestore, ControlCamera } from '@material-ui/icons';
 import { useCommand } from '../../use/command';
@@ -75,11 +76,11 @@ const LordInfoPanel = (props: any) => {
     ['CQI', `${lord.cqi}`],
   ];
 
-  // const actions = [
-  //   ['Kill character', <Delete />, onClickDelete],
-  //   ['Replenish action points', <SettingsBackupRestore />, onClickReplenish],
-  //   ['Set camera position', <ControlCamera />, onClickCamera],
-  // ] as [string, any, any][];
+  const actions = [
+    ['Kill character', <Delete />, onClickDelete],
+    ['Replenish action points', <SettingsBackupRestore />, onClickReplenish],
+    ['Set camera position', <ControlCamera />, onClickCamera],
+  ] as [string, any, any][];
 
   return (
     <div className={classes.root}>
@@ -90,25 +91,16 @@ const LordInfoPanel = (props: any) => {
           </ListItem>
         ))}
       </List>
+      <Divider />
       <List subheader={<ListSubheader disableSticky>Actions</ListSubheader>}>
-        <ListItem button onClick={onClickDelete}>
-          <ListItemIcon>
-            <Delete />
-          </ListItemIcon>
-          <ListItemText primary="Kill character" />
-        </ListItem>
-        <ListItem button onClick={onClickReplenish}>
-          <ListItemIcon>
-            <SettingsBackupRestore />
-          </ListItemIcon>
-          <ListItemText primary="Replenish action points" />
-        </ListItem>
-        <ListItem button onClick={onClickCamera}>
-          <ListItemIcon>
-            <ControlCamera />
-          </ListItemIcon>
-          <ListItemText primary="Set camera position" />
-        </ListItem>
+        {actions.map(([label, icon, onClick]) => (
+          <ListItem key={label} button onClick={onClick}>
+            <ListItemIcon>
+              {icon}
+            </ListItemIcon>
+            <ListItemText primary={label} />
+          </ListItem>
+        ))}
       </List>
 
       <ArmyDeleteDialog

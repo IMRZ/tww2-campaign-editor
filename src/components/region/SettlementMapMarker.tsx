@@ -60,7 +60,7 @@ const Marker = memo((props: any) => {
   const flag = assets[flagPath].default;
 
   return (
-    <div className={classes.marker}>
+    <div className={classes.marker} onContextMenu={(e) => e.preventDefault()}>
       <img src={flag} alt="" className={classes.flag} onClick={onClick} />
     </div>
   );
