@@ -53,11 +53,10 @@ const Marker = memo((props: any) => {
 
   const flagPath = faction
     ? `${faction.flagPath}\\mon_rotated`
-    : props.owningFaction === 'rebels'
-      ? 'ui\\flags\\abandoned\\mon_rotated'
-      : 'ui\\flags\\_unknown_\\mon_rotated';
+    : 'ui\\flags\\abandoned\\mon_rotated';
+
   // @ts-ignore
-  const flag = assets[flagPath].default;
+  const flag = assets[flagPath] ? assets[flagPath].default : assets['ui\\flags\\_unknown_\\mon_rotated'].default;
 
   return (
     <div className={classes.marker} onContextMenu={(e) => e.preventDefault()}>
