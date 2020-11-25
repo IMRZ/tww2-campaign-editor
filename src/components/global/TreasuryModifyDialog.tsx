@@ -74,7 +74,7 @@ const HeroDialogCreate = () => {
       </DialogTitle>
       <DialogContent dividers>
         <Grid container spacing={2}>
-          <Grid item md={12}>
+          <Grid item xs={12}>
             <Autocomplete
               selectOnFocus
               disableClearable
@@ -98,7 +98,7 @@ const HeroDialogCreate = () => {
               )}
             />
           </Grid>
-          <Grid item md={12}>
+          <Grid item xs={12}>
           <TextField
             label="Amount"
             type="number"
