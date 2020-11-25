@@ -1,19 +1,20 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core';
-import { Language, AttachMoney } from '@material-ui/icons';
+import { Language, Visibility, AttachMoney } from '@material-ui/icons';
 import { SpeedDial, SpeedDialIcon, SpeedDialAction } from '@material-ui/lab';
 import { useDrawer } from '../useDrawer';
+import { useCommand } from '../../use/command';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     position: 'absolute',
-    bottom: theme.spacing(2),
+    top: theme.spacing(2),
     right: theme.spacing(2),
     zIndex: 1000,
   },
 }));
 
-const GenericCommandButton = () => {
+const CommandSpeedDial = () => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -24,16 +25,25 @@ const GenericCommandButton = () => {
     setOpen(false);
   };
 
+  const { toggleShroud } = useCommand();
+  const onClickToggleShroud = () => {
+    toggleShroud()
+      .then((r: any) => console.log(r))
+      .catch((e: any) => console.log(e));
+  };
+
   const actions = [
+    { icon: <Visibility />, name: 'Toggle shroud', onClick: onClickToggleShroud },
     { icon: <AttachMoney />, name: 'Modify treasury', onClick: onClickModTreasury },
   ];
 
   return (
     <SpeedDial
-      ariaLabel="Global actions"
+      ariaLabel="command-speed-dial"
       className={classes.root}
       icon={<SpeedDialIcon icon={<Language />} />}
       open={open}
+      direction="down"
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
     >
@@ -49,4 +59,4 @@ const GenericCommandButton = () => {
   );
 };
 
-export default GenericCommandButton;
+export default CommandSpeedDial;
