@@ -28,9 +28,9 @@ import { useStoreState, useStoreActions } from '../../store';
 import FieldAutocomplete from '../common/FieldAutocomplete';
 import UnitAutocomplete from './UnitAutocomplete/UnitAutocomplete';
 
-import agentTypes from '../../data/agent_types.json';
-import agentSubTypes from '../../data/agent_sub_types.json';
-import names from '../../data/names.json';
+import agentTypes from '../../data/tables/vanilla/agent_types.json';
+import agentSubTypes from '../../data/tables/vanilla/agent_sub_types.json';
+import names from '../../data/tables/vanilla/names.json';
 
 const agentTypeOptions = agentTypes
   .map((type) => ({ value: type, label: type }));

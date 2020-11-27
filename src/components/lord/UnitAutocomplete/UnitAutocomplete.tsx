@@ -3,7 +3,7 @@ import { TextField } from '@material-ui/core';
 import { Autocomplete, createFilterOptions } from '@material-ui/lab';
 import { Search } from '@material-ui/icons';
 
-import units from '../../../data/land_units.json';
+import { units } from '../../../data/tables';
 
 const options = Object.entries(units).map(([value, label]) => ({ value, label }));
 const filter = createFilterOptions<any>();

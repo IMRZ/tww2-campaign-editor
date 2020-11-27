@@ -8,7 +8,7 @@ import { useFaction, useCampaignMap } from '../../use/common';
 import { useStoreActions } from '../../store';
 
 import army_schematic_frame  from './army_schematic_frame.png';
-import assets from '../../assets';
+import assets from '../../assets/flags';
 
 const useStyles = makeStyles({
   marker: {
@@ -92,7 +92,7 @@ const Marker = React.memo((props: any) => {
   const faction = useFaction(props.faction);
   const flagPath = `${faction.flagPath}\\mon_64`;
   // @ts-ignore
-  const flag = assets[flagPath] ? assets[flagPath].default : assets['ui\\flags\\_unknown_\\mon_64'].default;
+  const flag = assets[flagPath] ? assets[flagPath].default : assets['ui\\flags\\unknown\\mon_64'].default;
 
   return (
     <div className={classes.marker} onClick={onClick} onContextMenu={(e) => e.preventDefault()}>
