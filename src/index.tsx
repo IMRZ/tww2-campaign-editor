@@ -23,14 +23,6 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-serviceWorkerRegistration.register({
-  onUpdate: (registration) => {
-    const waitingServiceWorker = registration.waiting;
-
-    if (waitingServiceWorker) {
-      waitingServiceWorker.postMessage({ type: 'SKIP_WAITING' });
-    }
-  },
-});
+serviceWorkerRegistration.register();
 
 reportWebVitals();
