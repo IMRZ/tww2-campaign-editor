@@ -8,8 +8,9 @@ import {
   ListItemIcon,
   Divider,
 } from '@material-ui/core';
-import { Transform } from '@material-ui/icons';
+import { Transform, NotInterested } from '@material-ui/icons';
 import RegionTransferDialog from './RegionTransferDialog';
+import RegionAbandonDialog from './RegionAbandonDialog';
 import { useQueryData } from '../../use/util';
 import { useFaction } from '../../use/common';
 
@@ -32,6 +33,7 @@ const SettlementInfoPanel = (props: any) => {
   const faction = useFaction(owningFaction);
 
   const [regionTransferOpen, setRegionTransferOpen] = React.useState(false);
+  const [regionAbandonOpen, setRegionAbandonOpen] = React.useState(false);
 
   const fields = [
     ['Name', `${region.name}, ${region.province.name}`],
@@ -42,6 +44,7 @@ const SettlementInfoPanel = (props: any) => {
 
   const actions = [
     [<Transform />, 'Transfer region', () => setRegionTransferOpen(true)],
+    [<NotInterested />, 'Abandon region', () => setRegionAbandonOpen(true)],
   ] as any[];
 
   return (
@@ -70,6 +73,11 @@ const SettlementInfoPanel = (props: any) => {
         regionKey={region.key}
         factionKey={owningFaction}
         onClose={() => setRegionTransferOpen(false)}
+      />
+      <RegionAbandonDialog
+        open={regionAbandonOpen}
+        regionKey={region.key}
+        onClose={() => setRegionAbandonOpen(false)}
       />
     </div>
   )
