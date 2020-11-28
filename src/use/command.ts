@@ -62,6 +62,10 @@ export function useCommand() {
         const type = 'spawn_agent_at_position';
         return queueCommand({ ...args, type });
       },
+      forceReligionFactors(args: any) {
+        const type = 'force_religion_factors';
+        return queueCommand({ ...args, type });
+      },
     };
   }, [queueCommand]);
 }
