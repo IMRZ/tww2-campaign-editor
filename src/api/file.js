@@ -4,7 +4,7 @@ export function isBrowserSupported() {
 }
 
 export async function initHandles() {
-  const dirHandle = await window.showDirectoryPicker({ recursive: true });
+  const dirHandle = await window.showDirectoryPicker();
   const requestHandle = await dirHandle.getFileHandle('request.json', { create: true });
   const responseHandle = await dirHandle.getFileHandle('response.json', { create: true });
 

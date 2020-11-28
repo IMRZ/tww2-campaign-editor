@@ -1,6 +1,10 @@
 import { useMemo } from 'react';
 import { useStoreActions } from '../store';
 
+const command = [
+
+];
+
 export function useCommand() {
   const queueCommand = useStoreActions((actions) => actions.game.queueCommand);
 
