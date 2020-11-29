@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const HeroDialogCreate = () => {
+const TreasuryModifyDialog = () => {
   const classes = useStyles();
 
   const activeModal = useStoreState((state) => state.ui.activeModal);
@@ -99,14 +99,14 @@ const HeroDialogCreate = () => {
             />
           </Grid>
           <Grid item xs={12}>
-          <TextField
-            label="Amount"
-            type="number"
-            variant="filled"
-            fullWidth
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-          />
+            <TextField
+              label="Amount"
+              type="number"
+              variant="filled"
+              fullWidth
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
+            />
           </Grid>
         </Grid>
       </DialogContent>
@@ -117,4 +117,4 @@ const HeroDialogCreate = () => {
   );
 };
 
-export default HeroDialogCreate;
+export default TreasuryModifyDialog;

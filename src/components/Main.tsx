@@ -13,6 +13,7 @@ import CommandSpeedDial from './global/CommandSpeedDial';
 import LordDialogCreate from './lord/LordDialogCreate';
 import HeroDialogCreate from './hero/HeroDialogCreate';
 import TreasuryModifyDialog from './global/TreasuryModifyDialog';
+import DiplomacyDialog from './global/DiplomacyDialog';
 
 function Main() {
   const campaign = useCampaignMap();
@@ -31,6 +32,7 @@ function Main() {
       <LordDialogCreate />
       <HeroDialogCreate />
       <TreasuryModifyDialog />
+      <DiplomacyDialog />
     </>
   );
 }

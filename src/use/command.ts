@@ -66,6 +66,34 @@ export function useCommand() {
         const type = 'force_religion_factors';
         return queueCommand({ ...args, type });
       },
+      forceDeclareWar(args: any) {
+        const type = 'force_declare_war';
+        return queueCommand({ ...args, type });
+      },
+      forceMakePeace(args: any) {
+        const type = 'force_make_peace';
+        return queueCommand({ ...args, type });
+      },
+      forceMakeVassal(args: any) {
+        const type = 'force_make_vassal';
+        return queueCommand({ ...args, type });
+      },
+      forceAlliance(args: any) {
+        const type = 'force_alliance';
+        return queueCommand({ ...args, type });
+      },
+      forceGrantMilitaryAccess(args: any) {
+        const type = 'force_grant_military_access';
+        return queueCommand({ ...args, type });
+      },
+      forceMakeTradeAgreement(args: any) {
+        const type = 'force_make_trade_agreement';
+        return queueCommand({ ...args, type });
+      },
+      forceConfederation(args: any) {
+        const type = 'force_confederation';
+        return queueCommand({ ...args, type });
+      },
     };
   }, [queueCommand]);
 }
