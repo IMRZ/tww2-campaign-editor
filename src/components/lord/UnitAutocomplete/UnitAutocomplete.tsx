@@ -3,9 +3,8 @@ import { TextField } from '@material-ui/core';
 import { Autocomplete, createFilterOptions } from '@material-ui/lab';
 import { Search } from '@material-ui/icons';
 
-import { units } from '../../../data/tables';
+import { landUnits } from '../../../data/tables';
 
-const options = Object.entries(units).map(([value, label]) => ({ value, label }));
 const filter = createFilterOptions<any>();
 
 type FieldAutocompleteProps = {
@@ -30,7 +29,8 @@ const UnitAutocomplete = (props: FieldAutocompleteProps) => {
       disabled={props.disabled}
       value={value}
       inputValue={inputValue}
-      options={options}
+      options={landUnits}
+      groupBy={(option) => option.group}
       renderOption={(option) => option.label}
       getOptionLabel={(option: any) => {
         if (typeof option === 'string') {
@@ -73,7 +73,6 @@ const UnitAutocomplete = (props: FieldAutocompleteProps) => {
         <TextField
           {...params}
           label="Add unit"
-          variant="filled"
           InputProps={{
             ...params.InputProps,
             startAdornment: <Search />,

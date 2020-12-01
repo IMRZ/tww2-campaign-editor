@@ -73,26 +73,25 @@ const useStyles = makeStyles((theme) => ({
     flex: 0.5,
     paddingLeft: theme.spacing(2),
   },
+  addUnit: {
+    padding: theme.spacing(0, 2),
+  },
 }));
 
 const initialState = {
   factionKey: { value: 'wh_main_emp_empire', label: 'Reikland' },
   regionKey: { value: 'wh_main_reikland_altdorf', label: 'Altdorf' },
   unitList: [
-    { value: "wh_main_grn_inf_orc_boyz", label: "Orc Boyz" },
-    { value: "wh_main_grn_inf_orc_boyz", label: "Orc Boyz" },
-    { value: "wh_main_grn_inf_orc_boyz", label: "Orc Boyz" },
-    { value: "wh_main_grn_inf_orc_boyz", label: "Orc Boyz" },
-    { value: "wh_main_grn_inf_orc_boyz", label: "Orc Boyz" },
-    { value: "wh_main_grn_inf_orc_boyz", label: "Orc Boyz" },
+    { value: "wh_main_emp_inf_halberdiers", label: "Halberdiers" },
+    { value: "wh_main_emp_inf_halberdiers", label: "Halberdiers" },
+    { value: "wh_main_emp_inf_halberdiers", label: "Halberdiers" },
+    { value: "wh_main_emp_inf_halberdiers", label: "Halberdiers" },
     { value: "wh2_dlc13_emp_inf_huntsmen_ror_0", label: "The White Wolves (Huntsmen)" },
     { value: "wh2_dlc13_emp_inf_huntsmen_ror_0", label: "The White Wolves (Huntsmen)" },
     { value: "wh2_dlc13_huntmarshall_veh_obsinite_gyrocopter_0", label: "Obsinite Gyrocopter" },
     { value: "wh2_dlc13_huntmarshall_veh_obsinite_gyrocopter_0", label: "Obsinite Gyrocopter" },
     { value: "wh_dlc04_emp_art_sunmaker_0", label: "The Sunmaker (Helstorm Rocket Battery)" },
     { value: "wh_dlc04_emp_art_sunmaker_0", label: "The Sunmaker (Helstorm Rocket Battery)" },
-    { value: "wh_dlc04_emp_art_sunmaker_0", label: "The Sunmaker (Helstorm Rocket Battery)" },
-    { value: "wh_dlc04_emp_art_sunmaker_0", label: "The Sunmaker (Helstorm Rocket Battery)" }
   ],
   agentType: { value: 'general', label: 'general' },
   agentSubtype: { value: 'wh2_dlc13_emp_cha_markus_wulfhart_0', label: 'wh2_dlc13_emp_cha_markus_wulfhart_0' },
@@ -306,16 +305,6 @@ const LordDialogCreate = () => {
         </Grid>
 
         <div className={classes.units}>
-          <UnitAutocomplete
-            onChange={(e) => {
-              if (e && state.unitList.length < 19) {
-                updateState((draft: any) => {
-                  draft.unitList.push(e);
-                });
-              }
-            }}
-            disabled={state.unitList.length >= 19}
-          />
           <List
             dense
             subheader={
@@ -339,6 +328,18 @@ const LordDialogCreate = () => {
               </ListItem>
             ))}
           </List>
+          <div className={classes.addUnit}>
+            <UnitAutocomplete
+              onChange={(e) => {
+                if (e && state.unitList.length < 19) {
+                  updateState((draft: any) => {
+                    draft.unitList.push(e);
+                  });
+                }
+              }}
+              disabled={state.unitList.length >= 19}
+            />
+          </div>
         </div>
       </DialogContent>
       <DialogActions>
