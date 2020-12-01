@@ -13,11 +13,13 @@ type FieldAutocompleteProps = {
   inputPlaceholder?: string;
   inputHelperText?: string;
   groupBy?: (option: any) => string;
+  disabled?: boolean;
 };
 
 const FieldAutocomplete = (props: FieldAutocompleteProps) => {
   return (
     <Autocomplete
+      disabled={props.disabled}
       freeSolo
       selectOnFocus
       autoHighlight

@@ -229,6 +229,7 @@ const LordDialogCreate = () => {
                   draft.agentType = e ?? { value: '', label: '' };
                 });
               }}
+              disabled
             />
           </Grid>
           <Grid md={12} item>

@@ -9,7 +9,7 @@ const filter = createFilterOptions<any>();
 
 type FieldAutocompleteProps = {
   onChange: (value: any) => void;
-  disabled: boolean;
+  disabled?: boolean;
 };
 
 const UnitAutocomplete = (props: FieldAutocompleteProps) => {
