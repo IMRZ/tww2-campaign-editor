@@ -12,6 +12,7 @@ type FieldAutocompleteProps = {
   inputLabel?: string;
   inputPlaceholder?: string;
   inputHelperText?: string;
+  groupBy?: (option: any) => string;
 };
 
 const FieldAutocomplete = (props: FieldAutocompleteProps) => {
@@ -23,6 +24,7 @@ const FieldAutocomplete = (props: FieldAutocompleteProps) => {
       clearOnBlur
       value={props.value}
       options={props.options}
+      groupBy={props.groupBy}
       renderOption={(option) => option.label}
       getOptionLabel={(option: any) => {
         if (typeof option === 'string') {

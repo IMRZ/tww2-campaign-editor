@@ -39,13 +39,13 @@ const agentSubTypeOptions = agentSubTypes
 
 const clanNameOptions = names
   .filter((name) => name.type === 'clan_name' && name.name !== ' ')
-  .map((name) => ({ value: `names_name_${name.id}`, label: name.name }));
+  .map((name) => ({ value: `names_name_${name.id}`, label: name.name, group: name.group }));
 const foreNameOptions = names
   .filter((name) => name.type === 'forename' && name.name !== ' ')
-  .map((name) => ({ value: `names_name_${name.id}`, label: name.name }));
+  .map((name) => ({ value: `names_name_${name.id}`, label: name.name, group: name.group }));
 const familyNameOptions = names
   .filter((name) => name.type === 'family_name' && name.name !== ' ')
-  .map((name) => ({ value: `names_name_${name.id}`, label: name.name }));
+  .map((name) => ({ value: `names_name_${name.id}`, label: name.name, group: name.group }));
 
 const useStyles = makeStyles((theme) => ({
   switch: {
@@ -251,6 +251,7 @@ const LordDialogCreate = () => {
               inputHelperText={`(Optional) Table lookup value: "${state.clanName ? state.clanName.value : ''}"`}
               value={state.clanName}
               options={clanNameOptions}
+              groupBy={(option) => option.group}
               onChange={(e) => {
                 updateState((draft: any) => {
                   draft.clanName = e ?? { value: '', label: '' };
@@ -264,6 +265,7 @@ const LordDialogCreate = () => {
               inputHelperText={`Table lookup value: "${state.foreName ? state.foreName.value : ''}"`}
               value={state.foreName}
               options={foreNameOptions}
+              groupBy={(option) => option.group}
               onChange={(e) => {
                 updateState((draft: any) => {
                   draft.foreName = e ?? { value: '', label: '' };
@@ -277,6 +279,7 @@ const LordDialogCreate = () => {
               inputHelperText={`Table lookup value: "${state.familyName ? state.familyName.value : ''}"`}
               value={state.familyName}
               options={familyNameOptions}
+              groupBy={(option) => option.group}
               onChange={(e) => {
                 updateState((draft: any) => {
                   draft.familyName = e ?? { value: '', label: '' };
