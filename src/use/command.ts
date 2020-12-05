@@ -94,6 +94,10 @@ export function useCommand() {
         const type = 'force_confederation';
         return queueCommand({ ...args, type });
       },
+      forceResetSkills(args: any) {
+        const type = 'force_reset_skills';
+        return queueCommand({ ...args, type });
+      },
     };
   }, [queueCommand]);
 }
