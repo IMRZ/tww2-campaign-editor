@@ -1,56 +1,21 @@
 import React, { useState } from 'react';
-import {
-  makeStyles,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  Grid,
-  TextField,
-  Button,
-  Typography,
-  IconButton,
-  Select,
-  MenuItem,
-} from '@material-ui/core';
+import { Grid, TextField, Select, MenuItem, DialogContent, DialogActions, Button } from '@material-ui/core';
 import { Autocomplete } from '@material-ui/lab';
-import { Close, Search } from '@material-ui/icons';
-import { useCommand } from '../../use/command';
-import { useQueryData } from '../../use/util';
-import { useStoreState, useStoreActions } from '../../store';
+import { Search } from '@material-ui/icons';
+import { useCommand } from '../../../use/command';
+import { useQueryData } from '../../../use/util';
 
-const useStyles = makeStyles((theme) => ({
-  close: {
-    position: 'absolute',
-    right: theme.spacing(1),
-    top: theme.spacing(1),
-  },
-}));
 
-const DiplomacyDialog = () => {
-  const classes = useStyles();
-
-  const activeModal = useStoreState((state) => state.ui.activeModal);
-  const closeActiveModal = useStoreActions((actions) => actions.ui.closeActiveModal);
-  const [open, setOpen] = useState(false);
-
-  const closeModal = () => setOpen(false);
-
-  React.useEffect(() => {
-    if (activeModal === 'diplomacy') {
-      setOpen(true);
-    }
-  }, [activeModal]);
-
+const DiplomacyForce = (props: any) => {
   const factions = useQueryData('get_factions_init', {});
   const factionOptions = Object.values(factions.data).map((faction: any) => ({
     value: faction.key,
     label: faction.name,
   }));
 
-  const [selectedAction, setSelectedAction] = React.useState(0);
-  const [proposingFaction, setProposingFaction] = React.useState(factionOptions[0]);
-  const [targetFaction, setTargetFaction] = React.useState(factionOptions[1]);
+  const [selectedAction, setSelectedAction] = useState(0);
+  const [proposingFaction, setProposingFaction] = useState(factionOptions[0]);
+  const [targetFaction, setTargetFaction] = useState(factionOptions[1]);
 
   const diplomacyOptions = [
     ['Force make peace', (proposingFaction, targetFaction) => command.forceMakePeace({ proposingFaction, targetFaction })],
@@ -64,26 +29,14 @@ const DiplomacyDialog = () => {
   ] as [string, (a: string, b: string) => void][];
 
   const command = useCommand();
-  const onClickModify = () => {
+  const onClickSubmit = () => {
     const action = diplomacyOptions[selectedAction][1];
     action(proposingFaction.value, targetFaction.value);
-    closeModal();
+    props.closeModal();
   };
 
   return (
-    <Dialog
-      fullWidth
-      maxWidth="sm"
-      open={open}
-      onClose={closeModal}
-      onExited={() => closeActiveModal()}
-    >
-      <DialogTitle disableTypography>
-        <Typography variant="h6">Diplomacy</Typography>
-        <IconButton className={classes.close} onClick={closeModal}>
-          <Close />
-        </IconButton>
-      </DialogTitle>
+    <>
       <DialogContent dividers>
         <Grid container spacing={2}>
           <Grid item xs={12}>
@@ -147,10 +100,10 @@ const DiplomacyDialog = () => {
         </Grid>
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClickModify}>Submit</Button>
+        <Button onClick={onClickSubmit}>Submit</Button>
       </DialogActions>
-    </Dialog>
+    </>
   );
 };
 
-export default DiplomacyDialog;
+export default DiplomacyForce;

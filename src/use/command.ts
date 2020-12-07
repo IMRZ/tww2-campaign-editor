@@ -98,6 +98,10 @@ export function useCommand() {
         const type = 'force_reset_skills';
         return queueCommand({ ...args, type });
       },
+      enableAllDiplomacy(args: any) {
+        const type = 'enable_all_diplomacy';
+        return queueCommand({ ...args, type });
+      },
     };
   }, [queueCommand]);
 }
