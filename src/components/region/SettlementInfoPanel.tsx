@@ -8,10 +8,11 @@ import {
   ListItemIcon,
   Divider,
 } from '@material-ui/core';
-import { Transform, NotInterested, Equalizer } from '@material-ui/icons';
+import { Transform, NotInterested, Equalizer, LocationCity } from '@material-ui/icons';
 import RegionTransferDialog from './RegionTransferDialog';
 import RegionAbandonDialog from './RegionAbandonDialog';
 import RegionCorruptionDialog from './RegionCorruptionDialog';
+import SettlementLevelDialog from './SettlementLevelDialog';
 import { useQueryData } from '../../use/util';
 import { useFaction } from '../../use/common';
 
@@ -36,6 +37,7 @@ const SettlementInfoPanel = (props: any) => {
   const [regionTransferOpen, setRegionTransferOpen] = React.useState(false);
   const [regionAbandonOpen, setRegionAbandonOpen] = React.useState(false);
   const [regionCorruptionOpen, setRegionCorruptionOpen] = React.useState(false);
+  const [settlementLevelOpen, setSettlementLevelOpen] = React.useState(false);
 
   const fields = [
     ['Name', `${region.name}, ${region.province.name}`],
@@ -48,6 +50,7 @@ const SettlementInfoPanel = (props: any) => {
     [<Transform />, 'Transfer region', () => setRegionTransferOpen(true)],
     [<NotInterested />, 'Abandon region', () => setRegionAbandonOpen(true)],
     [<Equalizer />, 'Set province corruption', () => setRegionCorruptionOpen(true)],
+    [<LocationCity />, 'Set settlement level', () => setSettlementLevelOpen(true)],
   ] as any[];
 
   return (
@@ -86,6 +89,11 @@ const SettlementInfoPanel = (props: any) => {
         open={regionCorruptionOpen}
         regionKey={region.key}
         onClose={() => setRegionCorruptionOpen(false)}
+      />
+      <SettlementLevelDialog
+        open={settlementLevelOpen}
+        regionKey={region.key}
+        onClose={() => setSettlementLevelOpen(false)}
       />
     </div>
   )

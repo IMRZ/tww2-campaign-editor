@@ -102,6 +102,10 @@ export function useCommand() {
         const type = 'enable_all_diplomacy';
         return queueCommand({ ...args, type });
       },
+      setSettlementLevel(args: any) {
+        const type = 'set_settlement_level';
+        return queueCommand({ ...args, type });
+      },
     };
   }, [queueCommand]);
 }
