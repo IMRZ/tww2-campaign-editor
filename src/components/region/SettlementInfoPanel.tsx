@@ -13,6 +13,7 @@ import RegionTransferDialog from './RegionTransferDialog';
 import RegionAbandonDialog from './RegionAbandonDialog';
 import RegionCorruptionDialog from './RegionCorruptionDialog';
 import SettlementLevelDialog from './SettlementLevelDialog';
+import SettlementEditDialog from './SettlementEditDialog';
 import { useQueryData } from '../../use/util';
 import { useFaction } from '../../use/common';
 
@@ -38,6 +39,7 @@ const SettlementInfoPanel = (props: any) => {
   const [regionAbandonOpen, setRegionAbandonOpen] = React.useState(false);
   const [regionCorruptionOpen, setRegionCorruptionOpen] = React.useState(false);
   const [settlementLevelOpen, setSettlementLevelOpen] = React.useState(false);
+  const [settlementEditOpen, setSettlementEditOpen] = React.useState(false);
 
   const fields = [
     ['Name', `${region.name}, ${region.province.name}`],
@@ -51,6 +53,7 @@ const SettlementInfoPanel = (props: any) => {
     [<NotInterested />, 'Abandon region', () => setRegionAbandonOpen(true)],
     [<Equalizer />, 'Set province corruption', () => setRegionCorruptionOpen(true)],
     [<LocationCity />, 'Set settlement level', () => setSettlementLevelOpen(true)],
+    [<LocationCity />, 'Edit settlement', () => setSettlementEditOpen(true)],
   ] as any[];
 
   return (
@@ -94,6 +97,11 @@ const SettlementInfoPanel = (props: any) => {
         open={settlementLevelOpen}
         regionKey={region.key}
         onClose={() => setSettlementLevelOpen(false)}
+      />
+      <SettlementEditDialog
+        open={settlementEditOpen}
+        regionKey={region.key}
+        onClose={() => setSettlementEditOpen(false)}
       />
     </div>
   )

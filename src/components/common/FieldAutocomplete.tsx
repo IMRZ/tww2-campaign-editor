@@ -6,7 +6,7 @@ import { Search } from '@material-ui/icons';
 const filter = createFilterOptions<any>();
 
 type FieldAutocompleteProps = {
-  value: any;
+  value?: any;
   options: any[];
   onChange: (value: any) => void;
   inputLabel?: string;
@@ -14,6 +14,7 @@ type FieldAutocompleteProps = {
   inputHelperText?: string;
   groupBy?: (option: any) => string;
   disabled?: boolean;
+  limit?: number;
 };
 
 const FieldAutocomplete = (props: FieldAutocompleteProps) => {
@@ -48,7 +49,11 @@ const FieldAutocomplete = (props: FieldAutocompleteProps) => {
             });
           }
 
-          return filtered;
+          if (props.limit) {
+            return filtered.slice(0, filtered.length > props.limit ? props.limit : filtered.length);
+          } else {
+            return filtered;
+          }
       }}
       onChange={(event, newValue: any) => {
         if (typeof newValue === 'string') {
@@ -69,7 +74,6 @@ const FieldAutocomplete = (props: FieldAutocompleteProps) => {
             ...params.InputProps,
             startAdornment: <Search />,
           }}
-
           variant="filled"
         />
       )}

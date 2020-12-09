@@ -106,6 +106,14 @@ export function useCommand() {
         const type = 'set_settlement_level';
         return queueCommand({ ...args, type });
       },
+      getSettlementSlots(args: any) {
+        const type = 'get_settlement_slots';
+        return queueCommand({ ...args, type });
+      },
+      setSettlementSlot(args: any) {
+        const type = 'set_settlement_slot';
+        return queueCommand({ ...args, type });
+      },
     };
   }, [queueCommand]);
 }
