@@ -7,7 +7,7 @@ import { useCommand } from '../../use/command';
 import { useFaction, useCampaignMap } from '../../use/common';
 import { useStoreActions } from '../../store';
 
-import assets from '../../assets';
+import assets from '../../assets/flags';
 
 const useStyles = makeStyles({
   marker: {
@@ -79,14 +79,12 @@ const Marker = React.memo((props: any) => {
   const onClick = () => setSelectedObject(['hero', props.cqi]);
 
   const faction = useFaction(props.faction);
-  const flagPath = faction
-    ? `${faction.flagPath}\\mon_24`
-    : 'ui\\flags\\_unknown_\\mon_24';
+  const flagPath = `${faction.flagPath}\\mon_24`;
   // @ts-ignore
-  const flag = assets[flagPath]?.default;
+  const flag = assets[flagPath] ? assets[flagPath].default : assets['ui\\flags\\unknown\\mon_24'].default;
 
   return (
-    <img src={flag} alt="" className={classes.marker} onClick={onClick} />
+    <img src={flag} alt="" className={classes.marker} onClick={onClick} onContextMenu={(e) => e.preventDefault()} />
   );
 });
 

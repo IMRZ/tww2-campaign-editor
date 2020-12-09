@@ -6,9 +6,14 @@ import {
   ListItem,
   ListItemText,
   ListItemIcon,
+  Divider,
 } from '@material-ui/core';
-import { Transform } from '@material-ui/icons';
+import { Transform, NotInterested, Equalizer, LocationCity } from '@material-ui/icons';
 import RegionTransferDialog from './RegionTransferDialog';
+import RegionAbandonDialog from './RegionAbandonDialog';
+import RegionCorruptionDialog from './RegionCorruptionDialog';
+import SettlementLevelDialog from './SettlementLevelDialog';
+import SettlementEditDialog from './SettlementEditDialog';
 import { useQueryData } from '../../use/util';
 import { useFaction } from '../../use/common';
 
@@ -31,6 +36,10 @@ const SettlementInfoPanel = (props: any) => {
   const faction = useFaction(owningFaction);
 
   const [regionTransferOpen, setRegionTransferOpen] = React.useState(false);
+  const [regionAbandonOpen, setRegionAbandonOpen] = React.useState(false);
+  const [regionCorruptionOpen, setRegionCorruptionOpen] = React.useState(false);
+  const [settlementLevelOpen, setSettlementLevelOpen] = React.useState(false);
+  const [settlementEditOpen, setSettlementEditOpen] = React.useState(false);
 
   const fields = [
     ['Name', `${region.name}, ${region.province.name}`],
@@ -41,6 +50,10 @@ const SettlementInfoPanel = (props: any) => {
 
   const actions = [
     [<Transform />, 'Transfer region', () => setRegionTransferOpen(true)],
+    [<NotInterested />, 'Abandon region', () => setRegionAbandonOpen(true)],
+    [<Equalizer />, 'Set province corruption', () => setRegionCorruptionOpen(true)],
+    [<LocationCity />, 'Set settlement level', () => setSettlementLevelOpen(true)],
+    [<LocationCity />, 'Edit settlement', () => setSettlementEditOpen(true)],
   ] as any[];
 
   return (
@@ -52,6 +65,7 @@ const SettlementInfoPanel = (props: any) => {
           </ListItem>
         ))}
       </List>
+      <Divider />
       <List subheader={<ListSubheader disableSticky>Actions</ListSubheader>}>
         {actions.map(([icon, label, action]) => (
           <ListItem key={label} button onClick={action}>
@@ -68,6 +82,26 @@ const SettlementInfoPanel = (props: any) => {
         regionKey={region.key}
         factionKey={owningFaction}
         onClose={() => setRegionTransferOpen(false)}
+      />
+      <RegionAbandonDialog
+        open={regionAbandonOpen}
+        regionKey={region.key}
+        onClose={() => setRegionAbandonOpen(false)}
+      />
+      <RegionCorruptionDialog
+        open={regionCorruptionOpen}
+        regionKey={region.key}
+        onClose={() => setRegionCorruptionOpen(false)}
+      />
+      <SettlementLevelDialog
+        open={settlementLevelOpen}
+        regionKey={region.key}
+        onClose={() => setSettlementLevelOpen(false)}
+      />
+      <SettlementEditDialog
+        open={settlementEditOpen}
+        regionKey={region.key}
+        onClose={() => setSettlementEditOpen(false)}
       />
     </div>
   )

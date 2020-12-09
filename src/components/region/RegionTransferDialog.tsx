@@ -8,8 +8,10 @@ import {
   Typography,
   IconButton,
   Button,
+  TextField,
 } from '@material-ui/core';
-import { Close } from '@material-ui/icons';
+import { Autocomplete } from '@material-ui/lab';
+import { Close, Search } from '@material-ui/icons';
 import { useQueryData } from '../../use/util';
 import { useCommand } from '../../use/command';
 
@@ -31,21 +33,17 @@ type RegionTransferDialogProps = {
 const RegionTransferDialog = (props: RegionTransferDialogProps) => {
   const classes = useStyles();
 
-  const [selected, setSelected] = React.useState(props.factionKey);
-
-  React.useEffect(() => {
-    setSelected(props.factionKey);
-  }, [props.open, props.factionKey]);
-
   const factions = useQueryData('get_factions_init', {});
   const factionOptions = Object.values(factions.data)
-    .map((faction: any) => ({ key: faction.key, name: faction.name }));
+    .map((faction: any) => ({ value: faction.key, label: faction.name }));
+
+  const [selected, setSelected] = React.useState(factionOptions.find((v) => v.value === props.factionKey) ?? factionOptions[0]);
 
   const command = useCommand();
 
   const onSubmit = () => {
     props.onClose();
-    command.transferRegionToFaction(props.regionKey, selected);
+    command.transferRegionToFaction(props.regionKey, selected.value);
   };
 
   return (
@@ -62,20 +60,32 @@ const RegionTransferDialog = (props: RegionTransferDialogProps) => {
         </IconButton>
       </DialogTitle>
       <DialogContent dividers>
-        <select value={selected} onChange={(e) => setSelected(e.target.value)}>
-          {factionOptions.map((faction: any) => (
-            <option
-              key={faction.key}
-              value={faction.key}
-            >
-              {faction.name}
-            </option>
-          ))}
-        </select>
+        <Autocomplete
+          selectOnFocus
+          disableClearable
+          autoHighlight
+          value={selected}
+          options={factionOptions}
+          renderOption={(option) => option.label}
+          getOptionSelected={(option, value) => option.value === value.value}
+          getOptionLabel={(option: any) => option.label}
+          onChange={(event, newValue: any) => setSelected(newValue)}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              label="Faction"
+              InputProps={{
+                ...params.InputProps,
+                startAdornment: <Search />,
+              }}
+              variant="filled"
+            />
+          )}
+        />
       </DialogContent>
       <DialogActions>
         <Button onClick={props.onClose}>Cancel</Button>
-        <Button onClick={onSubmit}>Ok</Button>
+        <Button onClick={onSubmit}>Transfer</Button>
       </DialogActions>
     </Dialog>
   );

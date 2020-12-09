@@ -6,8 +6,9 @@ import {
   ListItem,
   ListItemText,
   ListItemIcon,
+  Divider,
 } from '@material-ui/core';
-import { Delete, SettingsBackupRestore, ControlCamera } from '@material-ui/icons';
+import { Delete, SettingsBackupRestore, ControlCamera, RotateLeft } from '@material-ui/icons';
 import { useCommand } from '../../use/command';
 
 import ArmyDeleteDialog from '../lord/LordDeleteDialog';
@@ -59,6 +60,13 @@ const HeroInfoPanel = (props: any) => {
       .catch((e: any) => console.log(e));
   };
 
+  const onClickReset = () => {
+    const args = { cqi: hero.cqi };
+    command.forceResetSkills(args)
+      .then((r: any) => console.log(r))
+      .catch((e: any) => console.log(e));
+  };
+
   const onClickCamera = () => {
     const args = { cqi: hero.cqi };
     command.setCameraPosition(args)
@@ -76,7 +84,8 @@ const HeroInfoPanel = (props: any) => {
 
   const actions = [
     ['Kill character', <Delete />, onClickDelete],
-    ['Replenish action points', <SettingsBackupRestore />, onClickReplenish],
+    ['Replenish action points', <RotateLeft />, onClickReplenish],
+    ['Reset skill points', <SettingsBackupRestore />, onClickReset],
     ['Set camera position', <ControlCamera />, onClickCamera],
   ] as [string, any, any][];
 
@@ -89,6 +98,7 @@ const HeroInfoPanel = (props: any) => {
           </ListItem>
         ))}
       </List>
+      <Divider />
       <List subheader={<ListSubheader disableSticky>Actions</ListSubheader>}>
         {actions.map(([label, icon, onClick]) => (
           <ListItem key={label} button onClick={onClick}>

@@ -32,7 +32,7 @@ const MainBar = () => {
           Total War: WARHAMMER II
         </Typography>
         <Typography variant="subtitle2" color="textSecondary" noWrap>
-          Campaign Editor
+          Campaign Editor - {process.env.REACT_APP_VERSION}
         </Typography>
       </div>
       <span className={classes.fillSpace}></span>

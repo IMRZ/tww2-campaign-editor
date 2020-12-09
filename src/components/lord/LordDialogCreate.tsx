@@ -28,9 +28,9 @@ import { useStoreState, useStoreActions } from '../../store';
 import FieldAutocomplete from '../common/FieldAutocomplete';
 import UnitAutocomplete from './UnitAutocomplete/UnitAutocomplete';
 
-import agentTypes from '../../data/agent_types.json';
-import agentSubTypes from '../../data/agent_sub_types.json';
-import names from '../../data/names.json';
+import agentTypes from '../../data/tables/vanilla/agent_types.json';
+import agentSubTypes from '../../data/tables/vanilla/agent_sub_types.json';
+import names from '../../data/tables/vanilla/names.json';
 
 const agentTypeOptions = agentTypes
   .map((type) => ({ value: type, label: type }));
@@ -39,13 +39,13 @@ const agentSubTypeOptions = agentSubTypes
 
 const clanNameOptions = names
   .filter((name) => name.type === 'clan_name' && name.name !== ' ')
-  .map((name) => ({ value: `names_name_${name.id}`, label: name.name }));
+  .map((name) => ({ value: `names_name_${name.id}`, label: name.name, group: name.group }));
 const foreNameOptions = names
   .filter((name) => name.type === 'forename' && name.name !== ' ')
-  .map((name) => ({ value: `names_name_${name.id}`, label: name.name }));
+  .map((name) => ({ value: `names_name_${name.id}`, label: name.name, group: name.group }));
 const familyNameOptions = names
   .filter((name) => name.type === 'family_name' && name.name !== ' ')
-  .map((name) => ({ value: `names_name_${name.id}`, label: name.name }));
+  .map((name) => ({ value: `names_name_${name.id}`, label: name.name, group: name.group }));
 
 const useStyles = makeStyles((theme) => ({
   switch: {
@@ -73,26 +73,25 @@ const useStyles = makeStyles((theme) => ({
     flex: 0.5,
     paddingLeft: theme.spacing(2),
   },
+  addUnit: {
+    padding: theme.spacing(0, 2),
+  },
 }));
 
 const initialState = {
   factionKey: { value: 'wh_main_emp_empire', label: 'Reikland' },
   regionKey: { value: 'wh_main_reikland_altdorf', label: 'Altdorf' },
   unitList: [
-    { value: "wh_main_grn_inf_orc_boyz", label: "Orc Boyz" },
-    { value: "wh_main_grn_inf_orc_boyz", label: "Orc Boyz" },
-    { value: "wh_main_grn_inf_orc_boyz", label: "Orc Boyz" },
-    { value: "wh_main_grn_inf_orc_boyz", label: "Orc Boyz" },
-    { value: "wh_main_grn_inf_orc_boyz", label: "Orc Boyz" },
-    { value: "wh_main_grn_inf_orc_boyz", label: "Orc Boyz" },
+    { value: "wh_main_emp_inf_halberdiers", label: "Halberdiers" },
+    { value: "wh_main_emp_inf_halberdiers", label: "Halberdiers" },
+    { value: "wh_main_emp_inf_halberdiers", label: "Halberdiers" },
+    { value: "wh_main_emp_inf_halberdiers", label: "Halberdiers" },
     { value: "wh2_dlc13_emp_inf_huntsmen_ror_0", label: "The White Wolves (Huntsmen)" },
     { value: "wh2_dlc13_emp_inf_huntsmen_ror_0", label: "The White Wolves (Huntsmen)" },
     { value: "wh2_dlc13_huntmarshall_veh_obsinite_gyrocopter_0", label: "Obsinite Gyrocopter" },
     { value: "wh2_dlc13_huntmarshall_veh_obsinite_gyrocopter_0", label: "Obsinite Gyrocopter" },
     { value: "wh_dlc04_emp_art_sunmaker_0", label: "The Sunmaker (Helstorm Rocket Battery)" },
     { value: "wh_dlc04_emp_art_sunmaker_0", label: "The Sunmaker (Helstorm Rocket Battery)" },
-    { value: "wh_dlc04_emp_art_sunmaker_0", label: "The Sunmaker (Helstorm Rocket Battery)" },
-    { value: "wh_dlc04_emp_art_sunmaker_0", label: "The Sunmaker (Helstorm Rocket Battery)" }
   ],
   agentType: { value: 'general', label: 'general' },
   agentSubtype: { value: 'wh2_dlc13_emp_cha_markus_wulfhart_0', label: 'wh2_dlc13_emp_cha_markus_wulfhart_0' },
@@ -230,6 +229,7 @@ const LordDialogCreate = () => {
                   draft.agentType = e ?? { value: '', label: '' };
                 });
               }}
+              disabled
             />
           </Grid>
           <Grid md={12} item>
@@ -252,6 +252,7 @@ const LordDialogCreate = () => {
               inputHelperText={`(Optional) Table lookup value: "${state.clanName ? state.clanName.value : ''}"`}
               value={state.clanName}
               options={clanNameOptions}
+              groupBy={(option) => option.group}
               onChange={(e) => {
                 updateState((draft: any) => {
                   draft.clanName = e ?? { value: '', label: '' };
@@ -265,6 +266,7 @@ const LordDialogCreate = () => {
               inputHelperText={`Table lookup value: "${state.foreName ? state.foreName.value : ''}"`}
               value={state.foreName}
               options={foreNameOptions}
+              groupBy={(option) => option.group}
               onChange={(e) => {
                 updateState((draft: any) => {
                   draft.foreName = e ?? { value: '', label: '' };
@@ -278,6 +280,7 @@ const LordDialogCreate = () => {
               inputHelperText={`Table lookup value: "${state.familyName ? state.familyName.value : ''}"`}
               value={state.familyName}
               options={familyNameOptions}
+              groupBy={(option) => option.group}
               onChange={(e) => {
                 updateState((draft: any) => {
                   draft.familyName = e ?? { value: '', label: '' };
@@ -306,16 +309,6 @@ const LordDialogCreate = () => {
         </Grid>
 
         <div className={classes.units}>
-          <UnitAutocomplete
-            onChange={(e) => {
-              if (e && state.unitList.length < 19) {
-                updateState((draft: any) => {
-                  draft.unitList.push(e);
-                });
-              }
-            }}
-            disabled={state.unitList.length >= 19}
-          />
           <List
             dense
             subheader={
@@ -339,6 +332,18 @@ const LordDialogCreate = () => {
               </ListItem>
             ))}
           </List>
+          <div className={classes.addUnit}>
+            <UnitAutocomplete
+              onChange={(e) => {
+                if (e && state.unitList.length < 19) {
+                  updateState((draft: any) => {
+                    draft.unitList.push(e);
+                  });
+                }
+              }}
+              disabled={state.unitList.length >= 19}
+            />
+          </div>
         </div>
       </DialogContent>
       <DialogActions>

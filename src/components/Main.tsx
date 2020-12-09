@@ -9,9 +9,11 @@ import SettlementMapLayer from './region/SettlementMapLayer';
 import { useQueryInterval, useQueryData } from '../use/util';
 import { useCampaignMap } from '../use/common';
 
-import ToggleShroudButton from './global/ToggleShroudButton';
+import CommandSpeedDial from './global/CommandSpeedDial';
 import LordDialogCreate from './lord/LordDialogCreate';
 import HeroDialogCreate from './hero/HeroDialogCreate';
+import TreasuryModifyDialog from './global/TreasuryModifyDialog';
+import DiplomacyDialog from './global/DiplomacyDialog';
 
 function Main() {
   const campaign = useCampaignMap();
@@ -24,11 +26,13 @@ function Main() {
         <LordMapLayer characters={activeCharacters.lords} />
         <HeroMapLayer characters={activeCharacters.heroes} />
         <SettlementMapLayer regions={regions} regionOwners={regionOwners} />
-        <ToggleShroudButton />
+        <CommandSpeedDial />
       </Map>
 
       <LordDialogCreate />
       <HeroDialogCreate />
+      <TreasuryModifyDialog />
+      <DiplomacyDialog />
     </>
   );
 }

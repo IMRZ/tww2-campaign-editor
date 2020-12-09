@@ -6,7 +6,7 @@ import { createPortalIcon } from '../map/utils';
 import { useFaction, useCampaignMap } from '../../use/common';
 import { useStoreActions } from '../../store';
 import city_schem_frame_major from './city_schem_frame_major.png';
-import assets from '../../assets';
+import assets from '../../assets/flags';
 
 const useStyles = makeStyles({
   marker: {
@@ -53,14 +53,13 @@ const Marker = memo((props: any) => {
 
   const flagPath = faction
     ? `${faction.flagPath}\\mon_rotated`
-    : props.owningFaction === 'rebels'
-      ? 'ui\\flags\\abandoned\\mon_rotated'
-      : 'ui\\flags\\_unknown_\\mon_rotated';
+    : 'ui\\flags\\abandoned\\mon_rotated';
+
   // @ts-ignore
-  const flag = assets[flagPath].default;
+  const flag = assets[flagPath] ? assets[flagPath].default : assets['ui\\flags\\unknown\\mon_rotated'].default;
 
   return (
-    <div className={classes.marker}>
+    <div className={classes.marker} onContextMenu={(e) => e.preventDefault()}>
       <img src={flag} alt="" className={classes.flag} onClick={onClick} />
     </div>
   );

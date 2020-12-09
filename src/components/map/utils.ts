@@ -10,7 +10,6 @@ export function createPortalIcon() {
   return new PortalIcon({ element });
 }
 
-// TODO; divIcon
 const PortalIcon = L.DivIcon.extend({
   options: {
     element: null,

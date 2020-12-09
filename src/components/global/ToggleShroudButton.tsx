@@ -24,7 +24,7 @@ const ToggleShroudButton = () => {
   };
 
   return (
-    <Fab size="medium" color="primary" className={classes.fab} onClick={onClick}>
+    <Fab color="primary" className={classes.fab} onClick={onClick}>
       <Visibility />
     </Fab>
   );

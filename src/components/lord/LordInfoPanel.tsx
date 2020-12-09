@@ -6,8 +6,9 @@ import {
   ListItem,
   ListItemText,
   ListItemIcon,
+  Divider,
 } from '@material-ui/core';
-import { Delete, SettingsBackupRestore, ControlCamera } from '@material-ui/icons';
+import { Delete, SettingsBackupRestore, ControlCamera, RotateLeft } from '@material-ui/icons';
 import { useCommand } from '../../use/command';
 
 import ArmyDeleteDialog from './LordDeleteDialog';
@@ -60,6 +61,13 @@ const LordInfoPanel = (props: any) => {
       .catch((e: any) => console.log(e));
   };
 
+  const onClickReset = () => {
+    const args = { cqi: lord.cqi };
+    command.forceResetSkills(args)
+      .then((r: any) => console.log(r))
+      .catch((e: any) => console.log(e));
+  };
+
   const onClickCamera = () => {
     const args = { cqi: lord.cqi };
     command.setCameraPosition(args)
@@ -75,11 +83,12 @@ const LordInfoPanel = (props: any) => {
     ['CQI', `${lord.cqi}`],
   ];
 
-  // const actions = [
-  //   ['Kill character', <Delete />, onClickDelete],
-  //   ['Replenish action points', <SettingsBackupRestore />, onClickReplenish],
-  //   ['Set camera position', <ControlCamera />, onClickCamera],
-  // ] as [string, any, any][];
+  const actions = [
+    ['Kill character', <Delete />, onClickDelete],
+    ['Replenish action points', <RotateLeft />, onClickReplenish],
+    ['Reset skill points', <SettingsBackupRestore />, onClickReset],
+    ['Set camera position', <ControlCamera />, onClickCamera],
+  ] as [string, any, any][];
 
   return (
     <div className={classes.root}>
@@ -90,25 +99,16 @@ const LordInfoPanel = (props: any) => {
           </ListItem>
         ))}
       </List>
+      <Divider />
       <List subheader={<ListSubheader disableSticky>Actions</ListSubheader>}>
-        <ListItem button onClick={onClickDelete}>
-          <ListItemIcon>
-            <Delete />
-          </ListItemIcon>
-          <ListItemText primary="Kill character" />
-        </ListItem>
-        <ListItem button onClick={onClickReplenish}>
-          <ListItemIcon>
-            <SettingsBackupRestore />
-          </ListItemIcon>
-          <ListItemText primary="Replenish action points" />
-        </ListItem>
-        <ListItem button onClick={onClickCamera}>
-          <ListItemIcon>
-            <ControlCamera />
-          </ListItemIcon>
-          <ListItemText primary="Set camera position" />
-        </ListItem>
+        {actions.map(([label, icon, onClick]) => (
+          <ListItem key={label} button onClick={onClick}>
+            <ListItemIcon>
+              {icon}
+            </ListItemIcon>
+            <ListItemText primary={label} />
+          </ListItem>
+        ))}
       </List>
 
       <ArmyDeleteDialog
