@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from 'react';
+import React, { memo, useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import L from 'leaflet';
 import { makeStyles } from '@material-ui/core';
@@ -7,6 +7,7 @@ import { useFaction, useCampaignMap } from '../../use/common';
 import { useStoreActions } from '../../store';
 import city_schem_frame_major from './city_schem_frame_major.png';
 import assets from '../../assets/flags';
+import SettlementMapTooltip from './SettlementMapTooltip';
 
 const useStyles = makeStyles({
   marker: {
@@ -24,30 +25,35 @@ const useStyles = makeStyles({
 });
 
 const SettlementMapMarker = memo((props: any) => {
-  const { layer, x, y, owningFaction, cqi } = props;
-
-  const iconRef = React.useRef<any>(createPortalIcon());
-
+  const { layer, region, owningFaction } = props;
+  const [portalIcon] = useState<any>(createPortalIcon());
   const campaign = useCampaignMap();
 
   useEffect(() => {
-    const m = L.marker(campaign.toMapLatLng([y, x]), { icon: iconRef.current });
-    m.setZIndexOffset(40);
-    m.addTo(layer);
+    const { x, y } = region.settlement;
+    const marker = L.marker(campaign.toMapLatLng([y, x]), { icon: portalIcon });
+    marker.setZIndexOffset(40);
+    marker.addTo(layer);
 
     return () => {
-      m.removeFrom(layer);
+      marker.removeFrom(layer);
     };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  return ReactDOM.createPortal(<Marker cqi={cqi} owningFaction={owningFaction} />, iconRef.current.getElement());
+  return ReactDOM.createPortal(
+    <SettlementMapMarkerIcon region={region} owningFaction={owningFaction} />,
+    portalIcon.getElement(),
+  );
+}, (prevProps: any, nextProps: any) => {
+  // only rerender when owningFaction is changed
+  return prevProps.owningFaction === nextProps.owningFaction;
 });
 
-const Marker = memo((props: any) => {
+const SettlementMapMarkerIcon = (props: any) => {
   const classes = useStyles();
 
   const setSelectedObject = useStoreActions((actions) => actions.game.setSelectedObject);
-  const onClick = () => setSelectedObject(['region', props.cqi]);
+  const onClick = () => setSelectedObject(['region', props.region.cqi]);
 
   const faction = useFaction(props.owningFaction);
 
@@ -59,10 +65,12 @@ const Marker = memo((props: any) => {
   const flag = assets[flagPath] ? assets[flagPath].default : assets['ui\\flags\\unknown\\mon_rotated'].default;
 
   return (
-    <div className={classes.marker} onContextMenu={(e) => e.preventDefault()}>
-      <img src={flag} alt="" className={classes.flag} onClick={onClick} />
-    </div>
+    <SettlementMapTooltip region={props.region}>
+      <div className={classes.marker} onContextMenu={(e) => e.preventDefault()}>
+        <img src={flag} alt="" className={classes.flag} onClick={onClick} />
+      </div>
+    </SettlementMapTooltip>
   );
-});
+};
 
 export default SettlementMapMarker;
