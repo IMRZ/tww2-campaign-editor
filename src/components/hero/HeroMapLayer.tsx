@@ -29,11 +29,7 @@ const HeroMapLayer = (props: HeroMapLayerProps) => {
     <HeroMapMarker
       key={char.cqi}
       layer={layer}
-      cqi={char.cqi}
-      x={char.x}
-      y={char.y}
-      type={char.type}
-      faction={char.faction}
+      char={char}
     />
   ));
 

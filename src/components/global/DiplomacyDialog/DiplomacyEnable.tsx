@@ -36,6 +36,9 @@ const DiplomacyForce = (props: any) => {
       <DialogContent dividers>
         <Grid container spacing={2}>
           <Grid item xs={12}>
+            This allows you to enable/disable all diplomatic options between factions. Caution: This could crash your game with incorrect combinations.
+          </Grid>
+          <Grid item xs={12}>
             <FormControlLabel
               label="Enabled"
               control={

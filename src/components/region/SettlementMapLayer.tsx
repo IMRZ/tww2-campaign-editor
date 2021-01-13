@@ -28,12 +28,10 @@ const SettlementMapLayer = (props: MapMarkerLayerProps) => {
 
   const markers = regions.map((region) => (
     <SettlementMapMarker
-      layer={layer}
       key={region.cqi}
-      cqi={region.cqi}
-      x={region.settlement.x}
-      y={region.settlement.y}
+      layer={layer}
       owningFaction={regionOwners[region.key]}
+      region={region}
     />
   ));
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import L from 'leaflet';
 import { useMapContext } from '../map/context';
-import CharacterMarker from './LordMapMarker';
+import LordMapMarker from './LordMapMarker';
 
 type CharacterLayerProps = {
   characters: any[];
@@ -26,14 +26,10 @@ const CharacterLayer = (props: CharacterLayerProps) => {
   }
 
   const markers = characters.map((char) => (
-    <CharacterMarker
+    <LordMapMarker
       key={char.cqi}
       layer={layer}
-      cqi={char.cqi}
-      x={char.x}
-      y={char.y}
-      type={char.type}
-      faction={char.faction}
+      char={char}
     />
   ));
 

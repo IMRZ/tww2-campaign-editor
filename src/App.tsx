@@ -10,6 +10,8 @@ import Main from './components/Main';
 import NotSupported from './components/util/NotSupported';
 import StartButton from './components/util/StartButton';
 
+import GlobalTooltip from './components/tooltip/GlobalTooltip';
+
 function App() {
   const { start, campaign } = useData();
 
@@ -18,14 +20,18 @@ function App() {
   }
 
   return (
-    <MainScaffold
-      drawerOpen={true}
-      mobileDrawerOpen={false}
-      toggleDrawer={() => {}}
-      barContent={<MainBar />}
-      mainContent={campaign ? <Main /> : <StartButton onClick={start} />}
-      drawerContent={campaign ? <Drawer /> : <></>}
-    />
+    <>
+      <MainScaffold
+        drawerOpen={true}
+        mobileDrawerOpen={false}
+        toggleDrawer={() => {}}
+        barContent={<MainBar />}
+        mainContent={campaign ? <Main /> : <StartButton onClick={start} />}
+        drawerContent={campaign ? <Drawer /> : <></>}
+      />
+
+      <GlobalTooltip />
+    </>
   );
 }
 
