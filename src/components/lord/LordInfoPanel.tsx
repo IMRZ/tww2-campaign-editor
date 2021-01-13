@@ -8,10 +8,11 @@ import {
   ListItemIcon,
   Divider,
 } from '@material-ui/core';
-import { Delete, SettingsBackupRestore, ControlCamera, RotateLeft } from '@material-ui/icons';
+import { Delete, SettingsBackupRestore, ControlCamera, RotateLeft, AddBox } from '@material-ui/icons';
 import { useCommand } from '../../use/command';
 
-import ArmyDeleteDialog from './LordDeleteDialog';
+import LordDeleteDialog from './LordDeleteDialog';
+import LordAddAncillaryDialog from './LordAddAncillaryDialog';
 
 import { useFaction } from '../../use/common';
 import { useQueryData } from '../../use/util';
@@ -36,6 +37,12 @@ const LordInfoPanel = (props: any) => {
   const faction = useFaction(lord?.faction);
 
   const [selectedDeleteCqi, setSelectedDeleteCqi] = useState<number | undefined>();
+  const onClickDelete = () => setSelectedDeleteCqi(lord.cqi);
+  const onCloseDelete = () => setSelectedDeleteCqi(undefined);
+
+  const [selectedAddAncillaryCqi, setSelectedAddAncillaryCqi] = useState<number | undefined>();
+  const onClickAddAncillary = () => setSelectedAddAncillaryCqi(lord.cqi);
+  const onCloseAddAncillary = () => setSelectedAddAncillaryCqi(undefined);
 
   React.useEffect(() => {
     if (!lord) {
@@ -46,13 +53,6 @@ const LordInfoPanel = (props: any) => {
   if (!lord) {
     return null;
   }
-
-  const onClickDelete = () => {
-    setSelectedDeleteCqi(lord.cqi);
-  };
-  const onCloseDelete = () => {
-    setSelectedDeleteCqi(undefined);
-  };
 
   const onClickReplenish = () => {
     const args = { cqi: lord.cqi };
@@ -88,6 +88,7 @@ const LordInfoPanel = (props: any) => {
     ['Replenish action points', <RotateLeft />, onClickReplenish],
     ['Reset skill points', <SettingsBackupRestore />, onClickReset],
     ['Set camera position', <ControlCamera />, onClickCamera],
+    ['Add ancillary', <AddBox />, onClickAddAncillary],
   ] as [string, any, any][];
 
   return (
@@ -111,9 +112,13 @@ const LordInfoPanel = (props: any) => {
         ))}
       </List>
 
-      <ArmyDeleteDialog
+      <LordDeleteDialog
         cqi={selectedDeleteCqi}
         onClose={onCloseDelete}
+      />
+      <LordAddAncillaryDialog
+         cqi={selectedAddAncillaryCqi}
+         onClose={onCloseAddAncillary}
       />
     </div>
   );

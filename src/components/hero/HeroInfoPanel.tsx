@@ -8,10 +8,12 @@ import {
   ListItemIcon,
   Divider,
 } from '@material-ui/core';
-import { Delete, SettingsBackupRestore, ControlCamera, RotateLeft } from '@material-ui/icons';
+import { Delete, SettingsBackupRestore, ControlCamera, RotateLeft, AddBox } from '@material-ui/icons';
 import { useCommand } from '../../use/command';
 
-import ArmyDeleteDialog from '../lord/LordDeleteDialog';
+import LordDeleteDialog from '../lord/LordDeleteDialog';
+import LordAddAncillaryDialog from '../lord/LordAddAncillaryDialog';
+
 import { useFaction } from '../../use/common';
 import { useQueryData } from '../../use/util';
 import { useStoreActions } from '../../store';
@@ -35,6 +37,12 @@ const HeroInfoPanel = (props: any) => {
   const faction = useFaction(hero?.faction);
 
   const [selectedDeleteCqi, setSelectedDeleteCqi] = useState<number | undefined>();
+  const onClickDelete = () => setSelectedDeleteCqi(hero.cqi);
+  const onCloseDelete = () => setSelectedDeleteCqi(undefined);
+
+  const [selectedAddAncillaryCqi, setSelectedAddAncillaryCqi] = useState<number | undefined>();
+  const onClickAddAncillary = () => setSelectedAddAncillaryCqi(hero.cqi);
+  const onCloseAddAncillary = () => setSelectedAddAncillaryCqi(undefined);
 
   React.useEffect(() => {
     if (!hero) {
@@ -45,13 +53,6 @@ const HeroInfoPanel = (props: any) => {
   if (!hero) {
     return null;
   }
-
-  const onClickDelete = () => {
-    setSelectedDeleteCqi(hero.cqi);
-  };
-  const onCloseDelete = () => {
-    setSelectedDeleteCqi(undefined);
-  };
 
   const onClickReplenish = () => {
     const args = { cqi: hero.cqi };
@@ -87,6 +88,7 @@ const HeroInfoPanel = (props: any) => {
     ['Replenish action points', <RotateLeft />, onClickReplenish],
     ['Reset skill points', <SettingsBackupRestore />, onClickReset],
     ['Set camera position', <ControlCamera />, onClickCamera],
+    ['Add ancillary', <AddBox />, onClickAddAncillary],
   ] as [string, any, any][];
 
   return (
@@ -110,9 +112,13 @@ const HeroInfoPanel = (props: any) => {
         ))}
       </List>
 
-      <ArmyDeleteDialog
+      <LordDeleteDialog
         cqi={selectedDeleteCqi}
         onClose={onCloseDelete}
+      />
+      <LordAddAncillaryDialog
+         cqi={selectedAddAncillaryCqi}
+         onClose={onCloseAddAncillary}
       />
     </div>
   );

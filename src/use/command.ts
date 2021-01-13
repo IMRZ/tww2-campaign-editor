@@ -114,6 +114,14 @@ export function useCommand() {
         const type = 'set_settlement_slot';
         return queueCommand({ ...args, type });
       },
+      addAncillaryToFaction(args: any) {
+        const type = 'add_ancillary_to_faction';
+        return queueCommand({ ...args, type });
+      },
+      forceAddAncillary(args: any) {
+        const type = 'force_add_ancillary';
+        return queueCommand({ ...args, type });
+      },
     };
   }, [queueCommand]);
 }
