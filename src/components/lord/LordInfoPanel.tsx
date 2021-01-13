@@ -88,7 +88,7 @@ const LordInfoPanel = (props: any) => {
     ['Replenish action points', <RotateLeft />, onClickReplenish],
     ['Reset skill points', <SettingsBackupRestore />, onClickReset],
     ['Set camera position', <ControlCamera />, onClickCamera],
-    ['Add ancillary', <AddBox />, onClickAddAncillary],
+    ['Add ancillary/item', <AddBox />, onClickAddAncillary],
   ] as [string, any, any][];
 
   return (

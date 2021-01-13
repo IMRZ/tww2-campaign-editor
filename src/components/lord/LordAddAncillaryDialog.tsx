@@ -56,7 +56,7 @@ const LordAddAncillaryDialog = (props: LordAddAncillaryDialogProps) => {
       <DialogTitle>Add ancillary/item</DialogTitle>
       <DialogContent>
         <FieldAutocomplete
-          inputLabel="Ancillary"
+          inputLabel="Ancillary/item"
           inputHelperText={`Key: "${ancillary ? ancillary.value : ''}"`}
           value={ancillary}
           options={ancillaryOptions}

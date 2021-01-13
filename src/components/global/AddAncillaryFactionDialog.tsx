@@ -124,7 +124,7 @@ const AddAncillaryFactionDialog = () => {
               renderInput={(params) => (
                 <TextField
                   {...params}
-                  label="Ancillary"
+                  label="Ancillary/item"
                   InputProps={{
                     ...params.InputProps,
                     startAdornment: <Search />,
