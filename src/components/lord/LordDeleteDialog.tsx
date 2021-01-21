@@ -13,7 +13,7 @@ type LordDeleteDialogProps = {
   onClose: () => void;
 };
 
-const ArmyDeleteDialog = (props: LordDeleteDialogProps) => {
+const LordDeleteDialog = (props: LordDeleteDialogProps) => {
   const { killCharacter } = useCommand();
 
   const onConfirm = () => {
@@ -45,4 +45,4 @@ const ArmyDeleteDialog = (props: LordDeleteDialogProps) => {
   );
 };
 
-export default ArmyDeleteDialog;
+export default LordDeleteDialog;

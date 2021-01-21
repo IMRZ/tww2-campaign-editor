@@ -14,6 +14,7 @@ import LordDialogCreate from './lord/LordDialogCreate';
 import HeroDialogCreate from './hero/HeroDialogCreate';
 import TreasuryModifyDialog from './global/TreasuryModifyDialog';
 import DiplomacyDialog from './global/DiplomacyDialog';
+import AddAncillaryFactionDialog from './global/AddAncillaryFactionDialog';
 
 function Main() {
   const campaign = useCampaignMap();
@@ -33,6 +34,7 @@ function Main() {
       <HeroDialogCreate />
       <TreasuryModifyDialog />
       <DiplomacyDialog />
+      <AddAncillaryFactionDialog />
     </>
   );
 }

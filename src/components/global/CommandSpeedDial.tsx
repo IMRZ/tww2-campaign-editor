@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core';
-import { Language, Visibility, AttachMoney, Flag } from '@material-ui/icons';
+import { Language, Visibility, AttachMoney, Flag, AddBox } from '@material-ui/icons';
 import { SpeedDial, SpeedDialIcon, SpeedDialAction } from '@material-ui/lab';
 import { useDrawer } from '../useDrawer';
 import { useCommand } from '../../use/command';
@@ -37,10 +37,16 @@ const CommandSpeedDial = () => {
     setOpen(false);
   };
 
+  const onClickAddAncillary = () => {
+    drawer.openActiveModal(['add_ancillary_faction', null]);
+    setOpen(false);
+  };
+
   const actions = [
     { icon: <Visibility />, name: 'Toggle shroud', onClick: onClickToggleShroud },
     { icon: <AttachMoney />, name: 'Modify treasury', onClick: onClickModTreasury },
     { icon: <Flag />, name: 'Diplomacy', onClick: onClickDiplomacy },
+    { icon: <AddBox />, name: 'Add ancillary/item', onClick: onClickAddAncillary },
   ];
 
   return (

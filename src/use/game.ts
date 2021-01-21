@@ -33,6 +33,7 @@ export function useData() {
           .catch((e: any) => console.log(e));
       } catch (e) {
         console.log(e);
+        alert('Failed to exchange data with the game! The game is not running with the mod enabled or you have selected the wrong folder.');
       }
     }
   }, [campaign, init, fetchFactions, fetchRegions, fetchRegionOwners, command, setCampaign]);
