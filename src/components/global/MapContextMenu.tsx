@@ -21,6 +21,11 @@ const MapContextMenu = (props: any) => {
     props.onClose();
   };
 
+  const onClickCreateHeroUnique = () => {
+    drawer.openActiveModal(['hero-unique', state]);
+    props.onClose();
+  };
+
   return (
     <Menu
       keepMounted
@@ -36,6 +41,7 @@ const MapContextMenu = (props: any) => {
     >
       <MenuItem onClick={onClickCreateLord}>Create lord here</MenuItem>
       <MenuItem onClick={onClickCreateHero}>Create hero here</MenuItem>
+      <MenuItem onClick={onClickCreateHeroUnique}>Create unique hero at capital</MenuItem>
     </Menu>
   );
 };

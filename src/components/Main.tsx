@@ -12,6 +12,7 @@ import { useCampaignMap } from '../use/common';
 import CommandSpeedDial from './global/CommandSpeedDial';
 import LordDialogCreate from './lord/LordDialogCreate';
 import HeroDialogCreate from './hero/HeroDialogCreate';
+import HeroDialogCreateUnique from './hero/HeroDialogCreateUnique';
 import TreasuryModifyDialog from './global/TreasuryModifyDialog';
 import DiplomacyDialog from './global/DiplomacyDialog';
 import AddAncillaryFactionDialog from './global/AddAncillaryFactionDialog';
@@ -32,6 +33,7 @@ function Main() {
 
       <LordDialogCreate />
       <HeroDialogCreate />
+      <HeroDialogCreateUnique />
       <TreasuryModifyDialog />
       <DiplomacyDialog />
       <AddAncillaryFactionDialog />
