@@ -3,9 +3,11 @@ import { makeStyles, Toolbar, IconButton, Typography } from '@material-ui/core';
 import { GitHub, Help } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
-  title: {
-    display: 'flex',
-    flexDirection: 'column',
+  logo: {
+    width: 52,
+    height: 52,
+    marginRight: theme.spacing(1),
+    filter: 'drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5))'
   },
   github: {
     [theme.breakpoints.up('md')]: {
@@ -27,14 +29,8 @@ const MainBar = () => {
 
   return (
     <Toolbar>
-      <div className={classes.title}>
-        <Typography variant="h6" noWrap>
-          Total War: WARHAMMER II
-        </Typography>
-        <Typography variant="subtitle2" color="textSecondary" noWrap>
-          Campaign Editor - {process.env.REACT_APP_VERSION}
-        </Typography>
-      </div>
+      <img className={classes.logo} src="/images/logo.webp" alt="" />
+      <Typography variant="h6" noWrap>Campaign Editor</Typography>
       <span className={classes.fillSpace}></span>
       <IconButton
         color="inherit"
