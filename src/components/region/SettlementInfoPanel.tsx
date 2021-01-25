@@ -17,11 +17,21 @@ import SettlementEditDialog from './SettlementEditDialog';
 import { useQueryData } from '../../use/util';
 import { useFaction } from '../../use/common';
 
+import { IconButton } from '@material-ui/core';
+import { Close } from '@material-ui/icons';
+import { useStoreActions } from '../../store';
+
 const useStyles = makeStyles((theme) => ({
   root: {
+    position: 'relative',
     '& > *': {
       marginBottom: theme.spacing(2),
     },
+  },
+  close: {
+    position: 'absolute',
+    right: theme.spacing(1),
+    top: theme.spacing(1),
   },
 }));
 
@@ -56,6 +66,8 @@ const SettlementInfoPanel = (props: any) => {
     [<LocationCity />, 'Edit settlement', () => setSettlementEditOpen(true)],
   ] as any[];
 
+  const setSelectedObject = useStoreActions((actions) => actions.game.setSelectedObject);
+
   return (
     <div className={classes.root}>
       <List dense subheader={<ListSubheader disableSticky>Settlement</ListSubheader>}>
@@ -76,6 +88,10 @@ const SettlementInfoPanel = (props: any) => {
           </ListItem>
         ))}
       </List>
+
+      <IconButton className={classes.close} onClick={() => setSelectedObject(null)}>
+        <Close />
+      </IconButton>
 
       <RegionTransferDialog
         open={regionTransferOpen}

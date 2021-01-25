@@ -5,18 +5,31 @@ import { SpeedDial, SpeedDialIcon, SpeedDialAction } from '@material-ui/lab';
 import { useDrawer } from '../useDrawer';
 import { useCommand } from '../../use/command';
 
+import clsx from 'clsx';
+import { useStoreState } from '../../store';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     position: 'absolute',
     top: theme.spacing(2),
     right: theme.spacing(2),
     zIndex: 1000,
+    marginRight: 0,
+    transition: theme.transitions.create('margin', {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  contentShift: {
+    marginRight: 320,
   },
 }));
 
 const CommandSpeedDial = () => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+
+  const selectedObject = useStoreState((state) => state.game.selectedObject);
 
   const drawer = useDrawer();
 
@@ -52,7 +65,7 @@ const CommandSpeedDial = () => {
   return (
     <SpeedDial
       ariaLabel="command-speed-dial"
-      className={classes.root}
+      className={clsx(classes.root, { [classes.contentShift]: !!selectedObject })}
       icon={<SpeedDialIcon icon={<Language />} />}
       open={open}
       direction="down"

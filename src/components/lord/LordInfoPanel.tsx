@@ -19,13 +19,22 @@ import { useFaction } from '../../use/common';
 import { useQueryData } from '../../use/util';
 import { useStoreActions } from '../../store';
 
+import { IconButton } from '@material-ui/core';
+import { Close } from '@material-ui/icons';
+
 const useStyles = makeStyles((theme) => ({
   root: {
+    position: 'relative',
     overflowX: 'hidden',
     '& > *': {
       marginBottom: theme.spacing(2),
     },
-  }
+  },
+  close: {
+    position: 'absolute',
+    right: theme.spacing(1),
+    top: theme.spacing(1),
+  },
 }));
 
 const LordInfoPanel = (props: any) => {
@@ -106,6 +115,11 @@ const LordInfoPanel = (props: any) => {
           </ListItem>
         ))}
       </List>
+
+      <IconButton className={classes.close} onClick={() => setSelectedObject(null)}>
+        <Close />
+      </IconButton>
+
       <Divider />
       <List subheader={<ListSubheader disableSticky>Actions</ListSubheader>}>
         {actions.map(([label, icon, onClick]) => (

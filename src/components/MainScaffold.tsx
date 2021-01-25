@@ -1,6 +1,6 @@
 import React from 'react';
-import clsx from 'clsx';
-import { makeStyles, AppBar, Toolbar, Hidden, Drawer, Divider } from '@material-ui/core';
+import { makeStyles, AppBar, Toolbar, Drawer, Divider } from '@material-ui/core';
+import { useStoreState } from '../store';
 
 const drawerWidth = 320;
 
@@ -11,8 +11,11 @@ const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
+    backgroundSize: 'cover',
+    background: 'linear-gradient(transparent, #424242), url("/images/vortex2.webp") 0% 30% no-repeat',
   },
   drawer: {
+    position: 'relative',
     [theme.breakpoints.up('md')]: {
       width: drawerWidth,
       flexShrink: 0,
@@ -20,27 +23,20 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerPaper: {
     width: drawerWidth,
+    overflow: 'visible',
   },
   content: {
     display: 'flex',
     flexDirection: 'column',
     flexGrow: 1,
-    [theme.breakpoints.up('md')]: {
-      transition: theme.transitions.create('margin', {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
-      }),
-      marginRight: -drawerWidth,
-    },
+    marginRight: -drawerWidth,
   },
   contentShift: {
-    [theme.breakpoints.up('md')]: {
-      transition: theme.transitions.create('margin', {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-      marginRight: 0,
-    },
+    transition: theme.transitions.create('margin', {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+    marginRight: -drawerWidth,
   },
   scroller: {
     height: '100%',
@@ -57,17 +53,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 type MainScaffoldProps = {
-  drawerOpen: boolean;
-  mobileDrawerOpen: boolean;
-  toggleDrawer: () => void;
   barContent: React.ReactElement;
   mainContent: React.ReactElement;
   drawerContent: React.ReactElement;
 };
 
 const MainScaffold = (props: MainScaffoldProps) => {
-  const { drawerOpen, toggleDrawer } = props;
   const classes = useStyles();
+
+  const selectedObject = useStoreState((state) => state.game.selectedObject);
 
   return (
     <div className={classes.root}>
@@ -75,42 +69,22 @@ const MainScaffold = (props: MainScaffoldProps) => {
         {props.barContent}
         <Divider />
       </AppBar>
-      <main className={clsx(classes.content, { [classes.contentShift]: drawerOpen })}>
+      <main className={classes.content}>
         <Toolbar />
         {props.mainContent}
       </main>
       <nav className={classes.drawer}>
-        <Hidden mdUp implementation="css">
-          <Drawer
-            variant="temporary"
-            anchor="right"
-            open={props.mobileDrawerOpen}
-            onClose={toggleDrawer}
-            classes={{
-              paper: classes.drawerPaper,
-            }}
-            ModalProps={{
-              keepMounted: true,
-            }}
-          >
-            <div className={classes.scroller}>
-              {props.drawerContent}
-            </div>
-          </Drawer>
-        </Hidden>
-        <Hidden smDown implementation="css">
-          <Drawer
-            classes={{ paper: classes.drawerPaper }}
-            open={drawerOpen}
-            variant="persistent"
-            anchor="right"
-          >
-            <Toolbar />
-            <div className={classes.scroller}>
-              {props.drawerContent}
-            </div>
-          </Drawer>
-        </Hidden>
+        <Drawer
+          classes={{ paper: classes.drawerPaper }}
+          open={!!selectedObject}
+          variant="persistent"
+          anchor="right"
+        >
+          <Toolbar />
+          <div className={classes.scroller}>
+            {props.drawerContent}
+          </div>
+        </Drawer>
       </nav>
     </div>
   );
