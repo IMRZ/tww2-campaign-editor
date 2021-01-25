@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
     backgroundSize: 'cover',
-    background: 'linear-gradient(transparent, #424242), url("/images/vortex2.webp") 0% 30% no-repeat',
+    background: `linear-gradient(transparent, #424242), url("${process.env.PUBLIC_URL}/images/vortex2.webp") 0% 30% no-repeat`,
   },
   drawer: {
     position: 'relative',

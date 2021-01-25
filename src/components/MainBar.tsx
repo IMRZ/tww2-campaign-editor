@@ -29,7 +29,7 @@ const MainBar = () => {
 
   return (
     <Toolbar>
-      <img className={classes.logo} src="/images/logo.webp" alt="" />
+      <img className={classes.logo} src={`${process.env.PUBLIC_URL}/images/logo.webp`} alt="" />
       <Typography variant="h6" noWrap>Campaign Editor</Typography>
       <span className={classes.fillSpace}></span>
       <IconButton
