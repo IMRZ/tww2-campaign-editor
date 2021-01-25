@@ -122,6 +122,10 @@ export function useCommand() {
         const type = 'force_add_ancillary';
         return queueCommand({ ...args, type });
       },
+      forceAddTrait(args: any) {
+        const type = 'force_add_trait';
+        return queueCommand({ ...args, type });
+      }
     };
   }, [queueCommand]);
 }

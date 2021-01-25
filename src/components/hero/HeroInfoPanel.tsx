@@ -8,11 +8,12 @@ import {
   ListItemIcon,
   Divider,
 } from '@material-ui/core';
-import { Delete, SettingsBackupRestore, ControlCamera, RotateLeft, AddBox } from '@material-ui/icons';
+import { Delete, SettingsBackupRestore, ControlCamera, RotateLeft, AddBox, AddCircle } from '@material-ui/icons';
 import { useCommand } from '../../use/command';
 
 import LordDeleteDialog from '../lord/LordDeleteDialog';
 import LordAddAncillaryDialog from '../lord/LordAddAncillaryDialog';
+import CharacterAddTraitDialog from '../character/CharacterAddTraitDialog';
 
 import { useFaction } from '../../use/common';
 import { useQueryData } from '../../use/util';
@@ -43,6 +44,10 @@ const HeroInfoPanel = (props: any) => {
   const [selectedAddAncillaryCqi, setSelectedAddAncillaryCqi] = useState<number | undefined>();
   const onClickAddAncillary = () => setSelectedAddAncillaryCqi(hero.cqi);
   const onCloseAddAncillary = () => setSelectedAddAncillaryCqi(undefined);
+
+  const [selectedAddTraitCqi, setSelectedAddTraitCqi] = useState<number | undefined>();
+  const onClickAddTrait = () => setSelectedAddTraitCqi(hero.cqi);
+  const onCloseAddTrait = () => setSelectedAddTraitCqi(undefined);
 
   React.useEffect(() => {
     if (!hero) {
@@ -89,6 +94,7 @@ const HeroInfoPanel = (props: any) => {
     ['Reset skill points', <SettingsBackupRestore />, onClickReset],
     ['Set camera position', <ControlCamera />, onClickCamera],
     ['Add ancillary/item', <AddBox />, onClickAddAncillary],
+    ['Add trait', <AddCircle />, onClickAddTrait],
   ] as [string, any, any][];
 
   return (
@@ -117,8 +123,12 @@ const HeroInfoPanel = (props: any) => {
         onClose={onCloseDelete}
       />
       <LordAddAncillaryDialog
-         cqi={selectedAddAncillaryCqi}
-         onClose={onCloseAddAncillary}
+        cqi={selectedAddAncillaryCqi}
+        onClose={onCloseAddAncillary}
+      />
+      <CharacterAddTraitDialog
+        cqi={selectedAddTraitCqi}
+        onClose={onCloseAddTrait}
       />
     </div>
   );
