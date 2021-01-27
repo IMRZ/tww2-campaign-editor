@@ -21,7 +21,7 @@ type FieldAutocompleteProps = {
 const FieldAutocomplete = (props: FieldAutocompleteProps) => {
   return (
     <Autocomplete
-      disableClearable
+      disableClearable={props.disableClearable}
       disabled={props.disabled}
       freeSolo
       selectOnFocus

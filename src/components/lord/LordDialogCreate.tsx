@@ -39,13 +39,16 @@ const agentSubTypeOptions = agentSubTypes
 
 const clanNameOptions = names
   .filter((name) => name.type === 'clan_name' && name.name !== ' ')
-  .map((name) => ({ value: `names_name_${name.id}`, label: name.name, group: name.group }));
+  .map((name) => ({ value: `names_name_${name.id}`, label: name.name, group: name.group }))
+  .sort((a: any, b: any) => a.group.localeCompare(b.group));
 const foreNameOptions = names
   .filter((name) => name.type === 'forename' && name.name !== ' ')
-  .map((name) => ({ value: `names_name_${name.id}`, label: name.name, group: name.group }));
+  .map((name) => ({ value: `names_name_${name.id}`, label: name.name, group: name.group }))
+  .sort((a: any, b: any) => a.group.localeCompare(b.group));
 const familyNameOptions = names
   .filter((name) => name.type === 'family_name' && name.name !== ' ')
-  .map((name) => ({ value: `names_name_${name.id}`, label: name.name, group: name.group }));
+  .map((name) => ({ value: `names_name_${name.id}`, label: name.name, group: name.group }))
+  .sort((a: any, b: any) => a.group.localeCompare(b.group));
 
 const useStyles = makeStyles((theme) => ({
   switch: {
