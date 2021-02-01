@@ -8,12 +8,13 @@ import {
   ListItemIcon,
   Divider,
 } from '@material-ui/core';
-import { Transform, NotInterested, Equalizer, LocationCity } from '@material-ui/icons';
+import { Transform, NotInterested, Equalizer, LocationCity, HomeWork } from '@material-ui/icons';
 import RegionTransferDialog from './RegionTransferDialog';
 import RegionAbandonDialog from './RegionAbandonDialog';
 import RegionCorruptionDialog from './RegionCorruptionDialog';
 import SettlementLevelDialog from './SettlementLevelDialog';
 import SettlementEditDialog from './SettlementEditDialog';
+import RegionForeignSlotCreate from './RegionForeignSlotCreate';
 import { useQueryData } from '../../use/util';
 import { useFaction } from '../../use/common';
 
@@ -50,6 +51,7 @@ const SettlementInfoPanel = (props: any) => {
   const [regionCorruptionOpen, setRegionCorruptionOpen] = React.useState(false);
   const [settlementLevelOpen, setSettlementLevelOpen] = React.useState(false);
   const [settlementEditOpen, setSettlementEditOpen] = React.useState(false);
+  const [foreignSlotCreateOpen, setForeignSlotCreateOpen] = React.useState(false);
 
   const fields = [
     ['Name', `${region.name}, ${region.province.name}`],
@@ -64,6 +66,7 @@ const SettlementInfoPanel = (props: any) => {
     [<Equalizer />, 'Set province corruption', () => setRegionCorruptionOpen(true)],
     [<LocationCity />, 'Set settlement level', () => setSettlementLevelOpen(true)],
     [<LocationCity />, 'Edit settlement', () => setSettlementEditOpen(true)],
+    [<HomeWork />, 'Create undercity/pirate cove', () => setForeignSlotCreateOpen(true)],
   ] as any[];
 
   const setSelectedObject = useStoreActions((actions) => actions.game.setSelectedObject);
@@ -118,6 +121,11 @@ const SettlementInfoPanel = (props: any) => {
         open={settlementEditOpen}
         regionKey={region.key}
         onClose={() => setSettlementEditOpen(false)}
+      />
+      <RegionForeignSlotCreate
+        open={foreignSlotCreateOpen}
+        regionCqi={region.cqi}
+        onClose={() => setForeignSlotCreateOpen(false)}
       />
     </div>
   )
