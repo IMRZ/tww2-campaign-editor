@@ -3,6 +3,11 @@ import { makeStyles, Toolbar, IconButton, Typography } from '@material-ui/core';
 import { GitHub, Help } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
+  toolBar: {
+    zIndex: theme.zIndex.drawer + 1,
+    backgroundSize: 'cover',
+    background: `linear-gradient(transparent, #424242), url("${process.env.PUBLIC_URL}/images/vortex2.webp") 0% 30% no-repeat`,
+  },
   logo: {
     width: 52,
     height: 52,
@@ -28,7 +33,7 @@ const MainBar = () => {
   const classes = useStyles();
 
   return (
-    <Toolbar>
+    <Toolbar className={classes.toolBar}>
       <img className={classes.logo} src={`${process.env.PUBLIC_URL}/images/logo.webp`} alt="" />
       <Typography variant="h6" noWrap>Campaign Editor</Typography>
       <span className={classes.fillSpace}></span>
