@@ -32,7 +32,10 @@ const StartButton = (props: any) => {
             <Typography>Make sure the game is running with the mod activated</Typography>
           </li>
           <li>
-            <Typography>Select the correct folder. Press F11 ingame so see what the folder is or use this shortcut: <span className={classes.bold}>%USERPROFILE%\wh2_web_editor_mod</span></Typography>
+            <Typography>Wait for the game to fully load and you are able to interact with the game world</Typography>
+          </li>
+          <li>
+            <Typography>Select the correct folder. Press F11 ingame so see what the folder is or copy/paste the following shortcut: <span className={classes.bold}>%USERPROFILE%\wh2_web_editor_mod</span></Typography>
           </li>
         </ul>
         <Button onClick={props.onClick} variant="outlined">Start</Button>
