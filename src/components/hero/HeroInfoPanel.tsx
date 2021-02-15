@@ -7,6 +7,8 @@ import {
   ListItemText,
   ListItemIcon,
   Divider,
+  Toolbar,
+  Typography,
 } from '@material-ui/core';
 import { Delete, SettingsBackupRestore, ControlCamera, RotateLeft, AddBox, AddCircle } from '@material-ui/icons';
 import { useCommand } from '../../use/command';
@@ -26,14 +28,12 @@ const useStyles = makeStyles((theme) => ({
   root: {
     position: 'relative',
     overflowX: 'hidden',
-    '& > *': {
-      marginBottom: theme.spacing(2),
-    },
   },
-  close: {
-    position: 'absolute',
-    right: theme.spacing(1),
-    top: theme.spacing(1),
+  toolbar: {
+    padding: theme.spacing(0, 2),
+  },
+  title: {
+    flex: 1,
   },
 }));
 
@@ -108,17 +108,20 @@ const HeroInfoPanel = (props: any) => {
 
   return (
     <div className={classes.root}>
-      <List dense subheader={<ListSubheader disableSticky>Hero</ListSubheader>}>
+      <Toolbar className={classes.toolbar}>
+        <Typography className={classes.title}>Hero</Typography>
+        <IconButton edge="end" onClick={() => setSelectedObject(null)}>
+          <Close />
+        </IconButton>
+      </Toolbar>
+
+      <List dense>
         {fields.map(([label, value]) => (
           <ListItem key={label}>
             <ListItemText primary={label} secondary={value} />
           </ListItem>
         ))}
       </List>
-
-      <IconButton className={classes.close} onClick={() => setSelectedObject(null)}>
-        <Close />
-      </IconButton>
 
       <Divider />
       <List subheader={<ListSubheader disableSticky>Actions</ListSubheader>}>

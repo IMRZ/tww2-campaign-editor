@@ -7,6 +7,8 @@ import {
   ListItemText,
   ListItemIcon,
   Divider,
+  Toolbar,
+  Typography,
 } from '@material-ui/core';
 import { Transform, NotInterested, Equalizer, LocationCity, HomeWork } from '@material-ui/icons';
 import RegionTransferDialog from './RegionTransferDialog';
@@ -25,14 +27,13 @@ import { useStoreActions } from '../../store';
 const useStyles = makeStyles((theme) => ({
   root: {
     position: 'relative',
-    '& > *': {
-      marginBottom: theme.spacing(2),
-    },
+    overflowX: 'hidden',
   },
-  close: {
-    position: 'absolute',
-    right: theme.spacing(1),
-    top: theme.spacing(1),
+  toolbar: {
+    padding: theme.spacing(0, 2),
+  },
+  title: {
+    flex: 1,
   },
 }));
 
@@ -73,7 +74,14 @@ const SettlementInfoPanel = (props: any) => {
 
   return (
     <div className={classes.root}>
-      <List dense subheader={<ListSubheader disableSticky>Settlement</ListSubheader>}>
+      <Toolbar className={classes.toolbar}>
+        <Typography className={classes.title}>Settlement</Typography>
+        <IconButton edge="end" onClick={() => setSelectedObject(null)}>
+          <Close />
+        </IconButton>
+      </Toolbar>
+
+      <List dense>
         {fields.map(([label, value]) => (
           <ListItem key={label}>
             <ListItemText primary={label} secondary={value} />
@@ -91,10 +99,6 @@ const SettlementInfoPanel = (props: any) => {
           </ListItem>
         ))}
       </List>
-
-      <IconButton className={classes.close} onClick={() => setSelectedObject(null)}>
-        <Close />
-      </IconButton>
 
       <RegionTransferDialog
         open={regionTransferOpen}
