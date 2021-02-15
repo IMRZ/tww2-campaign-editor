@@ -10,9 +10,10 @@ import {
   Toolbar,
   Typography,
 } from '@material-ui/core';
-import { Delete, SettingsBackupRestore, ControlCamera, RotateLeft, AddBox, AddCircle } from '@material-ui/icons';
+import { PersonAdd, Delete, SettingsBackupRestore, ControlCamera, RotateLeft, AddBox, AddCircle } from '@material-ui/icons';
 import { useCommand } from '../../use/command';
 
+import LordDialogAddUnit from './LordDialogAddUnit';
 import LordDeleteDialog from './LordDeleteDialog';
 import LordAddAncillaryDialog from './LordAddAncillaryDialog';
 import CharacterAddTraitDialog from '../character/CharacterAddTraitDialog';
@@ -45,6 +46,10 @@ const LordInfoPanel = (props: any) => {
   const characters = useQueryData('get_active_characters', {});
   const lord: any = characters.data.find((char: any) => char.cqi === props.cqi);
   const faction = useFaction(lord?.faction);
+
+  const [selecteAddCqi, setSelectedAddCqi] = useState<number | undefined>();
+  const onClickAdd = () => setSelectedAddCqi(lord.cqi);
+  const onCloseAdd = () => setSelectedAddCqi(undefined);
 
   const [selectedDeleteCqi, setSelectedDeleteCqi] = useState<number | undefined>();
   const onClickDelete = () => setSelectedDeleteCqi(lord.cqi);
@@ -98,6 +103,7 @@ const LordInfoPanel = (props: any) => {
   ];
 
   const actions = [
+    ['Add unit to army', <PersonAdd />, onClickAdd],
     ['Kill character', <Delete />, onClickDelete],
     ['Replenish action points', <RotateLeft />, onClickReplenish],
     ['Reset skill points', <SettingsBackupRestore />, onClickReset],
@@ -135,6 +141,10 @@ const LordInfoPanel = (props: any) => {
         ))}
       </List>
 
+      <LordDialogAddUnit
+        cqi={selecteAddCqi}
+        onClose={onCloseAdd}
+      />
       <LordDeleteDialog
         cqi={selectedDeleteCqi}
         onClose={onCloseDelete}
