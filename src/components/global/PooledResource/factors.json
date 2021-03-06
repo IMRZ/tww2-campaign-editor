@@ -1,0 +1,14 @@
+{
+  "wh2_dlc13_resource_factor_regions_returned": "Empire settlements returned",
+  "wh2_dlc13_resource_factor_events": "Political events",
+  "wh2_main_resource_factor_missions": "Missions",
+  "wh2_dlc13_resource_factor_preserved_peace": "Prevented Civil War",
+  "wh2_dlc13_resource_factor_elector_revived": "Elector Counts reinstated",
+
+  "wh2_dlc13_resource_factor_declared_war":	"Declared War on Elector Counts",
+  "wh2_dlc13_resource_factor_events_negative": "Political events (negative)",
+  "wh2_dlc13_resource_factor_regions_razed":	"Empire province capitals razed",
+  "wh2_dlc13_resource_factor_elector_destroyed": "Elector Counts destroyed",
+  "wh2_dlc13_resource_factor_confederation":	"Confederation",
+  "wh2_dlc13_resource_factor_attacked_returned_region": "Attacked recently-returned regions"
+}
