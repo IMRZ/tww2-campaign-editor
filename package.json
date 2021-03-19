@@ -17,6 +17,7 @@
     "clsx": "^1.1.1",
     "easy-peasy": "^4.0.1",
     "gh-pages": "^3.1.0",
+    "idb-keyval": "^5.0.2",
     "leaflet": "^1.7.1",
     "p-queue": "^6.6.2",
     "react": "^17.0.1",
