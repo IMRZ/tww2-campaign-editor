@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { useStoreState, useStoreActions } from '../store';
-import { initHandles, clearDirHandle } from '../api/file';
+import { initHandles } from '../api/file';
 import { useCommand } from '../use/command';
 import { useFetchQuery } from './util';
 
@@ -34,7 +34,6 @@ export function useData() {
       } catch (e) {
         console.log(e);
         alert('Failed to exchange data with the game! The game is not running with the mod enabled or you have selected the wrong folder.');
-        clearDirHandle();
       }
     }
   }, [campaign, init, fetchFactions, fetchRegions, fetchRegionOwners, command, setCampaign]);
