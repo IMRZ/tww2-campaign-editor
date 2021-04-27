@@ -11,11 +11,13 @@ import {
   Typography,
 } from '@material-ui/core';
 import { Delete, SettingsBackupRestore, ControlCamera, RotateLeft, AddBox, AddCircle } from '@material-ui/icons';
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import { useCommand } from '../../use/command';
 
 import LordDeleteDialog from '../lord/LordDeleteDialog';
 import LordAddAncillaryDialog from '../lord/LordAddAncillaryDialog';
 import CharacterAddTraitDialog from '../character/CharacterAddTraitDialog';
+import CharacterAddExperienceDialog from '../character/CharacterAddExperienceDialog';
 
 import { useFaction } from '../../use/common';
 import { useQueryData } from '../../use/util';
@@ -58,6 +60,10 @@ const HeroInfoPanel = (props: any) => {
   const onClickAddTrait = () => setSelectedAddTraitCqi(hero.cqi);
   const onCloseAddTrait = () => setSelectedAddTraitCqi(undefined);
 
+  const [experienceCqi, setExperienceCqi] = useState<number | undefined>();
+  const onClickAddExp = () => setExperienceCqi(hero.cqi);
+  const onCloseAddExp = () => setExperienceCqi(undefined);
+
   React.useEffect(() => {
     if (!hero) {
       setSelectedObject(null);
@@ -98,6 +104,7 @@ const HeroInfoPanel = (props: any) => {
   ];
 
   const actions = [
+    ['Add experience', <KeyboardArrowUpIcon />, onClickAddExp],
     ['Kill character', <Delete />, onClickDelete],
     ['Replenish action points', <RotateLeft />, onClickReplenish],
     ['Reset skill points', <SettingsBackupRestore />, onClickReset],
@@ -146,6 +153,10 @@ const HeroInfoPanel = (props: any) => {
       <CharacterAddTraitDialog
         cqi={selectedAddTraitCqi}
         onClose={onCloseAddTrait}
+      />
+      <CharacterAddExperienceDialog
+        cqi={experienceCqi}
+        onClose={onCloseAddExp}
       />
     </div>
   );
