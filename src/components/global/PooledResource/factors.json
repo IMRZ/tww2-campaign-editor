@@ -1,14 +1,359 @@
 {
-  "wh2_dlc13_resource_factor_regions_returned": "Empire settlements returned",
-  "wh2_dlc13_resource_factor_events": "Political events",
-  "wh2_main_resource_factor_missions": "Missions",
-  "wh2_dlc13_resource_factor_preserved_peace": "Prevented Civil War",
-  "wh2_dlc13_resource_factor_elector_revived": "Elector Counts reinstated",
-
-  "wh2_dlc13_resource_factor_declared_war":	"Declared War on Elector Counts",
-  "wh2_dlc13_resource_factor_events_negative": "Political events (negative)",
-  "wh2_dlc13_resource_factor_regions_razed":	"Empire province capitals razed",
-  "wh2_dlc13_resource_factor_elector_destroyed": "Elector Counts destroyed",
-  "wh2_dlc13_resource_factor_confederation":	"Confederation",
-  "wh2_dlc13_resource_factor_attacked_returned_region": "Attacked recently-returned regions"
+  "vmp_blood_kiss": {
+    "wh2_dlc11_vmp_resource_factor_enemy_character_assassinated": "Characters assassinated",
+    "wh2_dlc11_vmp_resource_factor_enemy_general_killed": "Faction leaders killed in battle",
+    "wh2_dlc11_vmp_resource_factor_bloodline_awoken": "Bloodline [[img:icon_general]][[/img]]Lords awoken",
+    "wh2_dlc11_vmp_resource_factor_other": "Other",
+    "wh2_dlc11_vmp_resource_factor_vassal": "Factions [[img:icon_vassal]][[/img]]vassalised"
+  },
+  "tmb_canopic_jars": {
+    "buildings": "Buildings",
+    "wh2_main_resource_factor_characters": "Characters",
+    "wh2_dlc09_resource_factor_events": "Events",
+    "wh2_dlc09_resource_factor_events_negative": "Events",
+    "wh2_dlc09_resource_factor_great_incantation_of_geheb": "Great Incantation of Geheb",
+    "wh2_dlc09_resource_factor_harvest_organs": "Harvest organs (captives)",
+    "wh2_main_resource_factor_missions": "Missions",
+    "wh2_dlc09_resource_factor_mortuary_cult": "Mortuary cult",
+    "wh2_main_resource_factor_other": "Other",
+    "wh2_dlc09_resource_factor_technology_tree": "Dynasties"
+  },
+  "dwf_oathgold": {
+    "buildings": "Buildings",
+    "wh2_main_resource_factor_characters": "Characters",
+    "wh2_main_resource_factor_forging_creating": "Gifts & Upgrades",
+    "wh2_main_resource_factor_forging_disassembling": "Recycling items",
+    "wh2_main_resource_factor_forging_grudges": "Grudges",
+    "wh2_main_resource_factor_missions": "Missions"
+  },
+  "grn_salvage": {
+    "wh2_dlc15_resource_factor_dish_cooking": "Cauldron firewood",
+    "wh2_dlc12_resource_factor_loot": "Discovered in battle",
+    "wh2_main_resource_factor_missions": "Missions",
+    "raiding": "Raiding",
+    "wh2_dlc15_resource_factor_waaagh_raze": "Razing settlements",
+    "wh2_main_resource_factor_technology_negative": "Technology",
+    "wh2_dlc13_resource_factor_technology": "Technology",
+    "wh2_dlc15_resource_factor_unit_upgrade": "Unit upgrades",
+    "wh2_dlc15_resource_factor_waaagh_success": "Previous Waaagh! success"
+  },
+  "cst_infamy": {
+    "wh2_dlc11_resource_factor_assassination": "Characters assassinated",
+    "wh2_dlc11_resource_factor_battles": "Enemy units killed",
+    "wh2_dlc11_resource_factor_edicts": "Commandments",
+    "wh2_main_resource_factor_missions": "Missions",
+    "wh2_dlc11_resource_factor_other": "Other",
+    "wh2_dlc11_resource_factor_pirate_coves": "Pirate coves",
+    "wh2_dlc11_resource_factor_razing": "Razed settlements",
+    "wh2_dlc11_resource_factor_sharing_loot": "Sharing loot",
+    "wh2_dlc11_resource_factor_technology": "Technology"
+  },
+  "skaven_food": {
+    "bribes": "Bribes",
+    "buildings": "Buildings",
+    "canibalism": "Cannibalism",
+    "captives": "Captives",
+    "colonisation": "Colonisation",
+    "commandments": "Commandments",
+    "force_upkeep": "Army upkeep",
+    "looting": "Looting",
+    "wh2_main_resource_factor_menace_below": "The Menace Below",
+    "raiding": "Raiding",
+    "regions": "Settlement upkeep",
+    "wh2_main_resource_factor_rituals": "Rituals",
+    "scavenging": "Scavenging",
+    "technology": "Technology",
+    "wh2_main_resource_factor_the_dominating_scheme": "The Dominating Scheme",
+    "wh2_dlc12_resource_factor_workshop_food": "Workshop research",
+    "wh2_dlc12_resource_food_under_empire_negative": "Under-Empire",
+    "wh2_dlc12_resource_food_under_empire_positive": "Under-Empire",
+    "wh2_dlc14_resource_factor_food_action_negative": "Eshin Actions",
+    "wh2_dlc14_resource_factor_food_action_positive": "Eshin Actions",
+    "wh2_dlc16_resource_factor_food_throt_flesh_lab_negative": "Flesh Lab",
+    "wh2_dlc16_resource_factor_food_throt_flesh_lab_positive": "Flesh Lab"
+  },
+  "wardens_supply": {
+    "wh2_dlc15_resource_factor_wardens_supply_executed_prisoners": "Executed Prisoners",
+    "wh2_dlc15_resource_factor_wardens_supply_sacked_razed_greenskins": "Greenskin Settlements Destroyed",
+    "wh2_dlc15_resource_factor_wardens_supply_indoctrinated_prisoners": "Indoctrinated Prisoners",
+    "wh2_dlc15_resource_factor_wardens_supply_missions": "Completed Objectives",
+    "wh2_dlc15_resource_factor_wardens_supply_mistwalkers": "Mistwalker Candidates",
+    "wh2_dlc15_resource_factor_wardens_supply_upgrade": "Athel Tamarha Upgrades"
+  },
+  "wef_amber": {
+    "wh2_main_resource_factor_other": "Other",
+    "wh2_dlc16_resource_factor_worldroots_healed": "Forests healed",
+    "wh2_main_resource_factor_technology_negative": "Technology"
+  },
+  "wef_forge_daiths_favour": {
+    "wh2_dlc13_resource_factor_battles": "Battles won",
+    "wh2_main_resource_factor_forging_creating": "Gifts & Upgrades"
+  },
+  "wef_worldroots_athel_loren": {
+    "wh2_dlc16_resource_factor_razing_and_battles": "Battles & Razing",
+    "buildings": "Buildings",
+    "wh2_dlc16_resource_factor_completed_encounters": "Resolved Encounters",
+    "wh2_dlc16_resource_factor_corruption": "Corruption",
+    "wh2_main_resource_factor_events": "Events",
+    "wh2_dlc16_resource_factor_hidden": "Hidden factor",
+    "wh2_dlc16_resource_factor_hostile_regions": "Hostile Heathlands",
+    "wh2_dlc16_resource_factor_natural_decline": "Natural Decline",
+    "wh2_dlc16_resource_factor_pacified_regions": "Pacified Heathlands",
+    "wh2_main_resource_factor_rituals": "Rituals",
+    "technology": "Technology",
+    "wh2_dlc16_resource_factor_unresolved_encounters": "Unresolved Encounters",
+    "wh2_dlc16_resource_factor_worldroots_healed": "Forests healed"
+  },
+  "wef_worldroots_emerald_pools": {
+    "wh2_dlc16_resource_factor_razing_and_battles": "Battles & Razing",
+    "buildings": "Buildings",
+    "wh2_dlc16_resource_factor_completed_encounters": "Resolved Encounters",
+    "wh2_dlc16_resource_factor_corruption": "Corruption",
+    "wh2_main_resource_factor_events": "Events",
+    "wh2_dlc16_resource_factor_hidden": "Hidden factor",
+    "wh2_dlc16_resource_factor_hostile_regions": "Hostile Heathlands",
+    "wh2_dlc16_resource_factor_pacified_regions": "Pacified Heathlands",
+    "wh2_main_resource_factor_rituals": "Rituals",
+    "technology": "Technology",
+    "wh2_dlc16_resource_factor_unresolved_encounters": "Unresolved Encounters"
+  },
+  "wef_worldroots_gaean_vale": {
+    "wh2_dlc16_resource_factor_razing_and_battles": "Battles & Razing",
+    "buildings": "Buildings",
+    "wh2_dlc16_resource_factor_completed_encounters": "Resolved Encounters",
+    "wh2_dlc16_resource_factor_corruption": "Corruption",
+    "wh2_main_resource_factor_events": "Events",
+    "wh2_dlc16_resource_factor_hidden": "Hidden factor",
+    "wh2_dlc16_resource_factor_hostile_regions": "Hostile Heathlands",
+    "wh2_dlc16_resource_factor_pacified_regions": "Pacified Heathlands",
+    "wh2_main_resource_factor_rituals": "Rituals",
+    "technology": "Technology",
+    "wh2_dlc16_resource_factor_unresolved_encounters": "Unresolved Encounters"
+  },
+  "wef_worldroots_gryphon_wood": {
+    "wh2_dlc16_resource_factor_razing_and_battles": "Battles & Razing",
+    "buildings": "Buildings",
+    "wh2_dlc16_resource_factor_completed_encounters": "Resolved Encounters",
+    "wh2_dlc16_resource_factor_corruption": "Corruption",
+    "wh2_main_resource_factor_events": "Events",
+    "wh2_dlc16_resource_factor_hidden": "Hidden factor",
+    "wh2_dlc16_resource_factor_hostile_regions": "Hostile Heathlands",
+    "wh2_dlc16_resource_factor_pacified_regions": "Pacified Heathlands",
+    "wh2_main_resource_factor_rituals": "Rituals",
+    "technology": "Technology",
+    "wh2_dlc16_resource_factor_unresolved_encounters": "Unresolved Encounters"
+  },
+  "wef_worldroots_heart_of_the_jungle": {
+    "wh2_dlc16_resource_factor_razing_and_battles": "Battles & Razing",
+    "buildings": "Buildings",
+    "wh2_dlc16_resource_factor_completed_encounters": "Resolved Encounters",
+    "wh2_dlc16_resource_factor_corruption": "Corruption",
+    "wh2_main_resource_factor_events": "Events",
+    "wh2_dlc16_resource_factor_hidden": "Hidden factor",
+    "wh2_dlc16_resource_factor_hostile_regions": "Hostile Heathlands",
+    "wh2_dlc16_resource_factor_pacified_regions": "Pacified Heathlands",
+    "wh2_main_resource_factor_rituals": "Rituals",
+    "technology": "Technology",
+    "wh2_dlc16_resource_factor_unresolved_encounters": "Unresolved Encounters"
+  },
+  "wef_worldroots_laurelorn": {
+    "wh2_dlc16_resource_factor_razing_and_battles": "Battles & Razing",
+    "buildings": "Buildings",
+    "wh2_dlc16_resource_factor_completed_encounters": "Resolved Encounters",
+    "wh2_dlc16_resource_factor_corruption": "Corruption",
+    "wh2_main_resource_factor_events": "Events",
+    "wh2_dlc16_resource_factor_hidden": "Hidden factor",
+    "wh2_dlc16_resource_factor_hostile_regions": "Hostile Heathlands",
+    "wh2_dlc16_resource_factor_pacified_regions": "Pacified Heathlands",
+    "wh2_main_resource_factor_rituals": "Rituals",
+    "technology": "Technology",
+    "wh2_dlc16_resource_factor_unresolved_encounters": "Unresolved Encounters"
+  },
+  "wef_worldroots_naggarond_glade": {
+    "wh2_dlc16_resource_factor_razing_and_battles": "Battles & Razing",
+    "buildings": "Buildings",
+    "wh2_dlc16_resource_factor_completed_encounters": "Resolved Encounters",
+    "wh2_dlc16_resource_factor_corruption": "Corruption",
+    "wh2_dlc11_resource_factor_other": "Other",
+    "wh2_dlc16_resource_factor_hidden": "Hidden factor",
+    "wh2_dlc16_resource_factor_hostile_regions": "Hostile Heathlands",
+    "wh2_dlc16_resource_factor_pacified_regions": "Pacified Heathlands",
+    "wh2_main_resource_factor_rituals": "Rituals",
+    "technology": "Technology",
+    "wh2_dlc16_resource_factor_unresolved_encounters": "Unresolved Encounters"
+  },
+  "wef_worldroots_naggarond_glade_vortex": {
+    "wh2_dlc16_resource_factor_natural_decline": "Natural Decline",
+    "wh2_dlc16_resource_factor_razing_and_battles": "Battles & Razing",
+    "buildings": "Buildings",
+    "wh2_dlc16_resource_factor_completed_encounters": "Resolved Encounters",
+    "wh2_dlc16_resource_factor_corruption": "Corruption",
+    "wh2_dlc11_resource_factor_other": "Other",
+    "wh2_dlc16_resource_factor_hidden": "Hidden factor",
+    "wh2_dlc16_resource_factor_hostile_regions": "Hostile Heathlands",
+    "wh2_dlc16_resource_factor_pacified_regions": "Pacified Heathlands",
+    "wh2_main_resource_factor_rituals": "Rituals",
+    "technology": "Technology",
+    "wh2_dlc16_resource_factor_unresolved_encounters": "Unresolved Encounters",
+    "wh2_dlc16_resource_factor_worldroots_healed": "Forests healed"
+  },
+  "wef_worldroots_vale_of_webs": {
+    "wh2_dlc16_resource_factor_razing_and_battles": "Battles & Razing",
+    "buildings": "Buildings",
+    "wh2_dlc16_resource_factor_completed_encounters": "Resolved Encounters",
+    "wh2_dlc16_resource_factor_corruption": "Corruption",
+    "wh2_main_resource_factor_events": "Events",
+    "wh2_dlc16_resource_factor_hidden": "Hidden factor",
+    "wh2_dlc16_resource_factor_hostile_regions": "Hostile Heathlands",
+    "wh2_dlc16_resource_factor_pacified_regions": "Pacified Heathlands",
+    "wh2_main_resource_factor_rituals": "Rituals",
+    "technology": "Technology",
+    "wh2_dlc16_resource_factor_unresolved_encounters": "Unresolved Encounters"
+  },
+  "emp_wanted": {
+    "wh2_dlc09_resource_factor_events": "Events",
+    "wh2_dlc13_resource_factor_casualty": "Armies attacked and defeated",
+    "wh2_dlc13_resource_factor_harassment": "Raiding & sacking",
+    "wh2_dlc13_resource_factor_lost_general": "Lords lost",
+    "wh2_dlc13_resource_factor_neutral": "Inactivity",
+    "wh2_dlc13_resource_factor_settlement": "Settlements looted, occupied or razed",
+    "wh2_dlc13_resource_factor_wanted_reset": "Hostility level reset"
+  },
+  "skv_reactor_core": {
+    "wh2_dlc12_resource_factor_action": "Hero actions",
+    "wh2_dlc12_resource_factor_loot": "Discovered in battle",
+    "wh2_dlc12_resource_factor_workshop_upgrade": "Workshop upgrade",
+    "wh2_main_resource_factor_missions": "Missions",
+    "wh2_dlc12_resource_factor_workshop": "Workshop research"
+  },
+  "skv_nuke": {
+    "wh2_dlc12_resource_factor_battle_consumed": "Consumed in battle",
+    "wh2_dlc12_resource_factor_workshop_production": "Workshop production"
+  },
+  "lzd_sacrificial_offerings": {
+    "wh2_dlc12_resource_factor_sacrifices": "Sacrificed to Sotek",
+    "wh2_dlc12_resource_factor_sacrifices_battle": "Captured in battle",
+    "wh2_main_resource_factor_characters": "Characters",
+    "wh2_dlc12_resource_factor_sacrifices_missions": "Captured during missions"
+  },
+  "emp_imperial_authority": {
+    "wh2_dlc13_resource_factor_events": "Political events",
+    "wh2_dlc13_resource_factor_events_negative": "Political events",
+    "wh2_main_resource_factor_missions": "Missions",
+    "wh2_dlc13_resource_factor_attacked_returned_region": "Attacked recently-returned regions",
+    "wh2_dlc13_resource_factor_confederation": "Confederation",
+    "wh2_dlc13_resource_factor_declared_war": "Declared War on Elector Counts",
+    "wh2_dlc13_resource_factor_elector_destroyed": "Elector Counts destroyed",
+    "wh2_dlc13_resource_factor_elector_revived": "Elector Counts reinstated",
+    "wh2_dlc13_resource_factor_preserved_peace": "Prevented Civil War",
+    "wh2_dlc13_resource_factor_regions_razed": "Empire province capitals razed",
+    "wh2_dlc13_resource_factor_regions_returned": "Empire settlements returned"
+  },
+  "emp_prestige": {
+    "wh2_dlc13_resource_factor_events": "Political events",
+    "wh2_dlc13_resource_factor_events_negative": "Political events",
+    "wh2_dlc13_resource_factor_battles": "Battles won",
+    "wh2_dlc13_resource_factor_buildings": "Buildings constructed",
+    "wh2_dlc13_resource_factor_electoral_machinations": "Electoral machinations",
+    "wh2_dlc13_resource_factor_regions": "Settlements owned"
+  },
+  "emp_loyalty": {
+    "wh2_dlc13_resource_factor_allowed_expansion": "Allowed expansion",
+    "wh2_dlc13_resource_factor_base_fealty": "Base fealty",
+    "wh2_dlc13_resource_factor_defended_regions": "Defended settlements",
+    "wh2_dlc13_resource_factor_denied_assistance": "Declined to defend settlement",
+    "wh2_dlc13_resource_factor_high_relations": "High relations",
+    "wh2_dlc13_resource_factor_imperial_authority_bonus": "Positive Imperial Authority",
+    "wh2_dlc13_resource_factor_imperial_authority_negative": "Negative Imperial Authority",
+    "wh2_dlc13_resource_factor_low_relations": "Low relations",
+    "wh2_dlc13_resource_factor_declared_war": "Declared War on Elector Counts",
+    "wh2_dlc13_resource_factor_events": "Political events",
+    "wh2_dlc13_resource_factor_events_negative": "Political events",
+    "wh2_dlc13_resource_factor_region_demand": "Demanded settlements",
+    "wh2_dlc13_resource_factor_regions_lost": "Settlements not returned",
+    "wh2_dlc13_resource_factor_reinstating_elector": "Reinstated Elector Count",
+    "wh2_dlc13_resource_factor_returning_regions": "Returned settlements",
+    "wh2_dlc13_resource_factor_technology": "Technology"
+  },
+  "emp_progress": {
+    "wh2_dlc13_resource_factor_building_ports": "Ports built or upgraded",
+    "wh2_dlc13_resource_factor_hunters_unlocked": "Hunters unlocked",
+    "wh2_dlc13_resource_factor_losing_settlement": "Lost territory",
+    "wh2_dlc13_resource_factor_siege": "Settlements captured"
+  },
+  "lzd_old_ones_favour": {
+    "wh2_dlc13_resource_factor_old_ones_income": "Defenders of the Great Plan",
+    "wh2_main_resource_factor_rites": "Rites",
+    "wh2_dlc13_resource_factor_old_ones_technology": "Technology",
+    "wh2_dlc13_resource_factor_old_ones_temples": "Establishing temples",
+    "wh2_dlc13_resource_factor_old_ones_units": "Temple rewards",
+    "wh2_main_resource_factor_missions": "Missions"
+  },
+  "skv_clan_mors": {
+    "wh2_dlc14_resource_factor_clan_rep_contract_against": "Contract Against",
+    "wh2_dlc14_resource_factor_clan_rep_contract_completed": "Contract Completion"
+  },
+  "skv_clan_moulder": {
+    "wh2_dlc14_resource_factor_clan_rep_contract_against": "Contract Against",
+    "wh2_dlc14_resource_factor_clan_rep_contract_completed": "Contract Completion"
+  },
+  "skv_clan_pestilens": {
+    "wh2_dlc14_resource_factor_clan_rep_contract_against": "Contract Against",
+    "wh2_dlc14_resource_factor_clan_rep_contract_completed": "Contract Completion"
+  },
+  "skv_clan_skyre": {
+    "wh2_dlc14_resource_factor_clan_rep_contract_against": "Contract Against",
+    "wh2_dlc14_resource_factor_clan_rep_contract_completed": "Contract Completion"
+  },
+  "skv_dust": {
+    "wh2_dlc14_resource_factor_dust_actions": "Shadowy Dealings",
+    "wh2_dlc14_resource_factor_dust_contracts": "Clan Contracts",
+    "wh2_dlc14_resource_factor_dust_per_turn": "Per Turn"
+  },
+  "def_malus_sanity": {
+    "wh2_dlc14_resource_factor_sanity_battle_ability": "Daemonic Abilities",
+    "wh2_dlc14_resource_factor_sanity_deterioration": "Possession",
+    "wh2_dlc14_resource_factor_sanity_in_settlement": "Within Settlement",
+    "wh2_dlc14_resource_factor_sanity_medication": "Elixir",
+    "wh2_dlc14_resource_factor_sanity_tzarkans_whispers": "Tz'arkan's Whispers"
+  },
+  "grn_waaagh": {
+    "wh2_dlc15_resource_factor_waaagh_battle_other": "Fighting battles",
+    "wh2_dlc15_resource_factor_waaagh_other": "Other",
+    "wh2_dlc15_resource_factor_waaagh_per_turn": "Passive gain",
+    "wh2_dlc15_resource_factor_waaagh_raze": "Razing settlements",
+    "wh2_dlc15_resource_factor_waaagh_success": "Previous Waaagh! success",
+    "wh2_dlc15_resource_factor_waaagh_triggered": "Waaagh! invasion ended"
+  },
+  "skv_growth_vat": {
+    "wh2_dlc16_throt_flesh_lab_growth_vat_gain_battles": "Battles",
+    "wh2_dlc16_throt_flesh_lab_growth_vat_gain_building": "Buildings",
+    "wh2_dlc16_throt_flesh_lab_growth_vat_gain_passive_gain": "Passive Gain",
+    "wh2_dlc16_throt_flesh_lab_growth_vat_gain_recycle": "Recycled units",
+    "wh2_dlc16_throt_flesh_lab_growth_vat_lose_spawn_monster": "Monsters extracted"
+  },
+  "skv_mutagen": {
+    "wh2_dlc16_throt_flesh_lab_mutagen_gain_conversion": "Conversion",
+    "wh2_dlc16_throt_flesh_lab_mutagen_gain_growth_vat": "Growth Vat",
+    "wh2_dlc16_throt_flesh_lab_mutagen_used_augment": "Unit Augmentations",
+    "wh2_dlc16_throt_flesh_lab_mutagen_used_degeneration": "Mutagen Degeneration",
+    "wh2_dlc16_throt_flesh_lab_mutagen_used_upgrade": "Flesh Lab upgrades"
+  },
+  "wh2_main_ritual_currency": {
+    "buildings": "Buildings",
+    "wh2_main_resource_factor_confederation": "Confederation",
+    "wh2_main_resource_factor_diplomacy": "Diplomacy",
+    "wh2_main_resource_factor_events": "Events",
+    "wh2_main_resource_factor_faction": "Faction",
+    "looting": "Looting",
+    "wh2_main_resource_factor_missions": "Missions",
+    "wh2_main_resource_factor_other": "Other",
+    "wh2_main_resource_factor_provinces": "Provinces",
+    "wh2_main_resource_factor_rituals": "Rituals",
+    "wh2_main_resource_factor_treasure_hunt": "Treasure Hunting"
+  },
+  "yvresse_defence": {
+    "wh2_dlc15_resource_factor_yvresse_defence_upgrade": "Athel Tamarha Upgrades",
+    "wh2_dlc15_resource_factor_yvresse_defence_settlement": "Yvresse Settlement Level"
+  }
 }

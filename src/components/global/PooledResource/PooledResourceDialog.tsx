@@ -21,7 +21,8 @@ import { useCommand } from './command';
 import { useQueryData } from '../../../use/util';
 import { useStoreState, useStoreActions } from '../../../store';
 
-import factors from './factors.json';
+import resourceLookup from './resources.json';
+import factorLookup from './factors.json';
 
 const useStyles = makeStyles((theme) => ({
   close: {
@@ -52,15 +53,22 @@ const TreasuryModifyDialog = () => {
     label: faction.name,
   }));
 
+  const [resource, setResource] = React.useState(() => 'emp_imperial_authority');
+  const factors: any = (factorLookup as any)[resource];
   const [selectedFaction, setSelectedFaction] = React.useState(() => factionOptions[0]);
-  const [selectedFactor, setSelectedFactor] = React.useState(() => Object.keys(factors)[1]);
+  const [selectedFactor, setSelectedFactor] = React.useState(() => Object.keys(factors)[0]);
   const [amount, setAmount] = React.useState(1);
+
+  React.useEffect(() => {
+    const factors: any = (factorLookup as any)[resource];
+    setSelectedFactor(Object.keys(factors)[0]);
+  }, [resource]);
 
   const { factionAddPooledResource } = useCommand();
   const onClickSubmit = () => {
     const args = {
       factionKey: selectedFaction.value,
-      resource: 'emp_imperial_authority',
+      resource: resource,
       factor: selectedFactor,
       amount: Number(amount),
     };
@@ -87,9 +95,6 @@ const TreasuryModifyDialog = () => {
       <DialogContent dividers>
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <Typography variant="h5">Imperial Authority</Typography>
-          </Grid>
-          <Grid item xs={4}>
             <Autocomplete
               selectOnFocus
               disableClearable
@@ -115,13 +120,27 @@ const TreasuryModifyDialog = () => {
           </Grid>
           <Grid item xs={4}>
             <FormControl variant="filled" fullWidth>
+              <InputLabel>Resource</InputLabel>
+              <Select
+                value={resource}
+                onChange={(e) => setResource(e.target.value as any)}
+                fullWidth
+              >
+                {Object.entries(resourceLookup).map(([key, value]: any) => (
+                  <MenuItem key={key} value={key}>{value}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item xs={4}>
+            <FormControl variant="filled" fullWidth>
               <InputLabel>Factor</InputLabel>
               <Select
                 value={selectedFactor}
                 onChange={(e) => setSelectedFactor(e.target.value as any)}
                 fullWidth
               >
-                {Object.entries(factors).map(([key, label]) => (
+                {Object.entries(factors).map(([key, label]: any) => (
                   <MenuItem key={key} value={key}>{label}</MenuItem>
                 ))}
               </Select>
