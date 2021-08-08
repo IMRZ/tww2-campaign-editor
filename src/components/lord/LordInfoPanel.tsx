@@ -10,7 +10,7 @@ import {
   Toolbar,
   Typography,
 } from '@material-ui/core';
-import { PersonAdd, Delete, SettingsBackupRestore, ControlCamera, RotateLeft, AddBox, AddCircle } from '@material-ui/icons';
+import { PersonAdd, Delete, SettingsBackupRestore, ControlCamera, RotateLeft, AddBox, AddCircle, Star } from '@material-ui/icons';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import { useCommand } from '../../use/command';
 
@@ -19,6 +19,7 @@ import LordDeleteDialog from './LordDeleteDialog';
 import LordAddAncillaryDialog from './LordAddAncillaryDialog';
 import CharacterAddTraitDialog from '../character/CharacterAddTraitDialog';
 import CharacterAddExperienceDialog from '../character/CharacterAddExperienceDialog';
+import CharacterSetImmortalDialog from '../character/CharacterSetImmortalDialog';
 
 import { useFaction } from '../../use/common';
 import { useQueryData } from '../../use/util';
@@ -69,6 +70,10 @@ const LordInfoPanel = (props: any) => {
   const onClickAddExp = () => setExperienceCqi(lord.cqi);
   const onCloseAddExp = () => setExperienceCqi(undefined);
 
+  const [immortalCqi, setImmortalCqi] = useState<number | undefined>();
+  const onClickSetImmortal = () => setImmortalCqi(lord.cqi);
+  const onCloseSetImmortal = () => setImmortalCqi(undefined);
+
   React.useEffect(() => {
     if (!lord) {
       setSelectedObject(null);
@@ -117,6 +122,7 @@ const LordInfoPanel = (props: any) => {
     ['Set camera position', <ControlCamera />, onClickCamera],
     ['Add ancillary/item', <AddBox />, onClickAddAncillary],
     ['Add trait', <AddCircle />, onClickAddTrait],
+    ['Set immortality', <Star />, onClickSetImmortal],
   ] as [string, any, any][];
 
   return (
@@ -167,6 +173,10 @@ const LordInfoPanel = (props: any) => {
       <CharacterAddExperienceDialog
         cqi={experienceCqi}
         onClose={onCloseAddExp}
+      />
+      <CharacterSetImmortalDialog
+        cqi={immortalCqi}
+        onClose={onCloseSetImmortal}
       />
     </div>
   );
