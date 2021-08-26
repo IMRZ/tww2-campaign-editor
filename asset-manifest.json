@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "/tww2-campaign-editor/static/css/main.b840f3f0.chunk.css",
+    "main.js": "/tww2-campaign-editor/static/js/main.de315f51.chunk.js",
+    "main.js.map": "/tww2-campaign-editor/static/js/main.de315f51.chunk.js.map",
+    "runtime-main.js": "/tww2-campaign-editor/static/js/runtime-main.245778a6.js",
+    "runtime-main.js.map": "/tww2-campaign-editor/static/js/runtime-main.245778a6.js.map",
+    "static/css/2.b4ebbe46.chunk.css": "/tww2-campaign-editor/static/css/2.b4ebbe46.chunk.css",
+    "static/js/2.d8c560e9.chunk.js": "/tww2-campaign-editor/static/js/2.d8c560e9.chunk.js",
+    "static/js/2.d8c560e9.chunk.js.map": "/tww2-campaign-editor/static/js/2.d8c560e9.chunk.js.map",
+    "static/js/3.27c3dccd.chunk.js": "/tww2-campaign-editor/static/js/3.27c3dccd.chunk.js",
+    "static/js/3.27c3dccd.chunk.js.map": "/tww2-campaign-editor/static/js/3.27c3dccd.chunk.js.map",
+    "f2f4e8d8ccce5d8a1acc.worker.js": "/tww2-campaign-editor/f2f4e8d8ccce5d8a1acc.worker.js",
+    "f2f4e8d8ccce5d8a1acc.worker.js.map": "/tww2-campaign-editor/f2f4e8d8ccce5d8a1acc.worker.js.map",
+    "index.html": "/tww2-campaign-editor/index.html",
+    "service-worker.js": "/tww2-campaign-editor/service-worker.js",
+    "service-worker.js.map": "/tww2-campaign-editor/service-worker.js.map",
+    "static/css/2.b4ebbe46.chunk.css.map": "/tww2-campaign-editor/static/css/2.b4ebbe46.chunk.css.map",
+    "static/css/main.b840f3f0.chunk.css.map": "/tww2-campaign-editor/static/css/main.b840f3f0.chunk.css.map",
+    "static/js/2.d8c560e9.chunk.js.LICENSE.txt": "/tww2-campaign-editor/static/js/2.d8c560e9.chunk.js.LICENSE.txt",
+    "static/media/army_schematic_frame.4eaa6e4f.png": "/tww2-campaign-editor/static/media/army_schematic_frame.4eaa6e4f.png",
+    "static/media/city_schem_frame_major.70ebbb8f.png": "/tww2-campaign-editor/static/media/city_schem_frame_major.70ebbb8f.png",
+    "static/media/mon_24.png": "/tww2-campaign-editor/static/media/mon_24.fe30c3d2.png",
+    "static/media/mon_256.png": "/tww2-campaign-editor/static/media/mon_256.ffe8bb0f.png",
+    "static/media/mon_64.png": "/tww2-campaign-editor/static/media/mon_64.fe875230.png",
+    "static/media/mon_rotated.png": "/tww2-campaign-editor/static/media/mon_rotated.ffd61a9d.png",
+    "static/media/wh2_main_great_vortex_map.webp": "/tww2-campaign-editor/static/media/wh2_main_great_vortex_map.b4a3926a.webp",
+    "static/media/wh_main_map.webp": "/tww2-campaign-editor/static/media/wh_main_map.6b6a13cf.webp"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.245778a6.js",
+    "static/css/2.b4ebbe46.chunk.css",
+    "static/js/2.d8c560e9.chunk.js",
+    "static/css/main.b840f3f0.chunk.css",
+    "static/js/main.de315f51.chunk.js"
+  ]
+}
