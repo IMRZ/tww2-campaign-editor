@@ -30,7 +30,7 @@ const CharacterAddTraitDialog = (props: CharacterAddTraitDialogProps) => {
     const args = {
       cqi: props.cqi,
       trait: trait.value,
-      traitPoints: 3,
+      traitPoints: 15,
     };
     command.forceAddTrait(args)
       .then((r: any) => console.log(r))

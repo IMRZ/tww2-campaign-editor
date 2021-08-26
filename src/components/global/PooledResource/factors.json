@@ -1,10 +1,41 @@
 {
+  "bst_dread": {
+    "wh2_dlc17_bst_dread_gain_bestial_rage": "Forces with high Bestial Rage",
+    "wh2_dlc17_bst_dread_gain_missions_events": "Missions & Events",
+    "wh2_dlc17_bst_dread_gain_taurox_rampage": "Taurox's Rampage",
+    "wh2_dlc11_resource_factor_battles": "Enemy units killed",
+    "wh2_dlc13_resource_factor_buildings": "Buildings constructed",
+    "wh2_dlc11_resource_factor_razing": "Razed settlements",
+    "wh2_dlc17_bst_dread_used_panel_purchase": "Rewards of Dread"
+  },
+  "bst_herdstone_shard": {
+    "wh2_dlc17_bst_herdstone_shard_gain_abandon_settlement": "Reclaimed",
+    "wh2_dlc17_bst_herdstone_shard_ruination_tier_increase": "Herdstone Shard Gained",
+    "wh2_dlc17_bst_herdstone_shard_used_create_herdstone": "Herdstone Created"
+  },
+  "bst_momentum": {
+    "wh2_dlc17_taurox_bst_momentum_gained_base": "Innate Momentum",
+    "wh2_dlc17_taurox_bst_momentum_gained_battle_won": "Battles won",
+    "wh2_dlc17_taurox_bst_momentum_lost_ap_replenish": "Movement range replenishment",
+    "wh2_dlc17_taurox_bst_momentum_lost_battle_lost": "Battles lost",
+    "wh2_dlc17_taurox_bst_momentum_lost_battle_retreat": "Retreating",
+    "wh2_dlc17_taurox_bst_momentum_lost_end_turn": "End of previous turn",
+    "wh2_dlc17_taurox_bst_momentum_lost_rampage_over": "Rampage ended"
+  },
+  "bst_rampage": {
+    "wh2_dlc17_taurox_bst_rampage_gain_battles": "Taurox Battle Victories",
+    "wh2_dlc17_taurox_bst_rampage_used_rampage_over": "Rampage Over"
+  },
+  "bst_ruination": {
+    "wh2_dlc17_bst_ruination_gained_mission_events": "Missions & Events",
+    "wh2_dlc17_bst_ruination_gained_settlement": "Rituals of Ruin"
+  },
   "vmp_blood_kiss": {
     "wh2_dlc11_vmp_resource_factor_enemy_character_assassinated": "Characters assassinated",
     "wh2_dlc11_vmp_resource_factor_enemy_general_killed": "Faction leaders killed in battle",
-    "wh2_dlc11_vmp_resource_factor_bloodline_awoken": "Bloodline [[img:icon_general]][[/img]]Lords awoken",
+    "wh2_dlc11_vmp_resource_factor_bloodline_awoken": "Bloodline Lords awoken",
     "wh2_dlc11_vmp_resource_factor_other": "Other",
-    "wh2_dlc11_vmp_resource_factor_vassal": "Factions [[img:icon_vassal]][[/img]]vassalised"
+    "wh2_dlc11_vmp_resource_factor_vassal": "Factions vassalised"
   },
   "tmb_canopic_jars": {
     "buildings": "Buildings",
@@ -47,6 +78,14 @@
     "wh2_dlc11_resource_factor_razing": "Razed settlements",
     "wh2_dlc11_resource_factor_sharing_loot": "Sharing loot",
     "wh2_dlc11_resource_factor_technology": "Technology"
+  },
+  "lzd_sanctum_gems": {
+    "wh2_dlc17_resource_factor_retrieved": "Retrieved",
+    "wh2_dlc17_resource_factor_gem_sets_completed": "Gem Sets Completed"
+  },
+  "lzd_sanctum_points": {
+    "wh2_dlc17_resource_factor_sanctum_sets_gained": "Gem Sets Completed",
+    "wh2_dlc17_resource_factor_sanctums_unlocked": "Sanctums Unlocked"
   },
   "skaven_food": {
     "bribes": "Bribes",
