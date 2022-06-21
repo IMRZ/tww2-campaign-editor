@@ -22,9 +22,6 @@ function App() {
   return (
     <>
       <MainScaffold
-        drawerOpen={true}
-        mobileDrawerOpen={false}
-        toggleDrawer={() => {}}
         barContent={<MainBar />}
         mainContent={campaign ? <Main /> : <StartButton onClick={start} />}
         drawerContent={campaign ? <Drawer /> : <></>}

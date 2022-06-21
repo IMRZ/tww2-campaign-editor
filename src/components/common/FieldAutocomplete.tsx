@@ -15,11 +15,13 @@ type FieldAutocompleteProps = {
   groupBy?: (option: any) => string;
   disabled?: boolean;
   limit?: number;
+  disableClearable?: boolean;
 };
 
 const FieldAutocomplete = (props: FieldAutocompleteProps) => {
   return (
     <Autocomplete
+      disableClearable={props.disableClearable}
       disabled={props.disabled}
       freeSolo
       selectOnFocus

@@ -7,24 +7,36 @@ import {
   ListItemText,
   ListItemIcon,
   Divider,
+  Toolbar,
+  Typography,
 } from '@material-ui/core';
-import { Delete, SettingsBackupRestore, ControlCamera, RotateLeft, AddBox } from '@material-ui/icons';
+import { Delete, SettingsBackupRestore, ControlCamera, RotateLeft, AddBox, AddCircle } from '@material-ui/icons';
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import { useCommand } from '../../use/command';
 
 import LordDeleteDialog from '../lord/LordDeleteDialog';
 import LordAddAncillaryDialog from '../lord/LordAddAncillaryDialog';
+import CharacterAddTraitDialog from '../character/CharacterAddTraitDialog';
+import CharacterAddExperienceDialog from '../character/CharacterAddExperienceDialog';
 
 import { useFaction } from '../../use/common';
 import { useQueryData } from '../../use/util';
 import { useStoreActions } from '../../store';
 
+import { IconButton } from '@material-ui/core';
+import { Close } from '@material-ui/icons';
+
 const useStyles = makeStyles((theme) => ({
   root: {
+    position: 'relative',
     overflowX: 'hidden',
-    '& > *': {
-      marginBottom: theme.spacing(2),
-    },
-  }
+  },
+  toolbar: {
+    padding: theme.spacing(0, 2),
+  },
+  title: {
+    flex: 1,
+  },
 }));
 
 const HeroInfoPanel = (props: any) => {
@@ -43,6 +55,14 @@ const HeroInfoPanel = (props: any) => {
   const [selectedAddAncillaryCqi, setSelectedAddAncillaryCqi] = useState<number | undefined>();
   const onClickAddAncillary = () => setSelectedAddAncillaryCqi(hero.cqi);
   const onCloseAddAncillary = () => setSelectedAddAncillaryCqi(undefined);
+
+  const [selectedAddTraitCqi, setSelectedAddTraitCqi] = useState<number | undefined>();
+  const onClickAddTrait = () => setSelectedAddTraitCqi(hero.cqi);
+  const onCloseAddTrait = () => setSelectedAddTraitCqi(undefined);
+
+  const [experienceCqi, setExperienceCqi] = useState<number | undefined>();
+  const onClickAddExp = () => setExperienceCqi(hero.cqi);
+  const onCloseAddExp = () => setExperienceCqi(undefined);
 
   React.useEffect(() => {
     if (!hero) {
@@ -84,22 +104,32 @@ const HeroInfoPanel = (props: any) => {
   ];
 
   const actions = [
+    ['Add experience', <KeyboardArrowUpIcon />, onClickAddExp],
     ['Kill character', <Delete />, onClickDelete],
     ['Replenish action points', <RotateLeft />, onClickReplenish],
     ['Reset skill points', <SettingsBackupRestore />, onClickReset],
     ['Set camera position', <ControlCamera />, onClickCamera],
     ['Add ancillary/item', <AddBox />, onClickAddAncillary],
+    ['Add trait', <AddCircle />, onClickAddTrait],
   ] as [string, any, any][];
 
   return (
     <div className={classes.root}>
-      <List dense subheader={<ListSubheader disableSticky>Hero</ListSubheader>}>
+      <Toolbar className={classes.toolbar}>
+        <Typography className={classes.title}>Hero</Typography>
+        <IconButton edge="end" onClick={() => setSelectedObject(null)}>
+          <Close />
+        </IconButton>
+      </Toolbar>
+
+      <List dense>
         {fields.map(([label, value]) => (
           <ListItem key={label}>
             <ListItemText primary={label} secondary={value} />
           </ListItem>
         ))}
       </List>
+
       <Divider />
       <List subheader={<ListSubheader disableSticky>Actions</ListSubheader>}>
         {actions.map(([label, icon, onClick]) => (
@@ -117,8 +147,16 @@ const HeroInfoPanel = (props: any) => {
         onClose={onCloseDelete}
       />
       <LordAddAncillaryDialog
-         cqi={selectedAddAncillaryCqi}
-         onClose={onCloseAddAncillary}
+        cqi={selectedAddAncillaryCqi}
+        onClose={onCloseAddAncillary}
+      />
+      <CharacterAddTraitDialog
+        cqi={selectedAddTraitCqi}
+        onClose={onCloseAddTrait}
+      />
+      <CharacterAddExperienceDialog
+        cqi={experienceCqi}
+        onClose={onCloseAddExp}
       />
     </div>
   );

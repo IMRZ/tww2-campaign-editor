@@ -7,24 +7,38 @@ import {
   ListItemText,
   ListItemIcon,
   Divider,
+  Toolbar,
+  Typography,
 } from '@material-ui/core';
-import { Delete, SettingsBackupRestore, ControlCamera, RotateLeft, AddBox } from '@material-ui/icons';
+import { PersonAdd, Delete, SettingsBackupRestore, ControlCamera, RotateLeft, AddBox, AddCircle, Star } from '@material-ui/icons';
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import { useCommand } from '../../use/command';
 
+import LordDialogAddUnit from './LordDialogAddUnit';
 import LordDeleteDialog from './LordDeleteDialog';
 import LordAddAncillaryDialog from './LordAddAncillaryDialog';
+import CharacterAddTraitDialog from '../character/CharacterAddTraitDialog';
+import CharacterAddExperienceDialog from '../character/CharacterAddExperienceDialog';
+import CharacterSetImmortalDialog from '../character/CharacterSetImmortalDialog';
 
 import { useFaction } from '../../use/common';
 import { useQueryData } from '../../use/util';
 import { useStoreActions } from '../../store';
 
+import { IconButton } from '@material-ui/core';
+import { Close } from '@material-ui/icons';
+
 const useStyles = makeStyles((theme) => ({
   root: {
+    position: 'relative',
     overflowX: 'hidden',
-    '& > *': {
-      marginBottom: theme.spacing(2),
-    },
-  }
+  },
+  toolbar: {
+    padding: theme.spacing(0, 2),
+  },
+  title: {
+    flex: 1,
+  },
 }));
 
 const LordInfoPanel = (props: any) => {
@@ -36,6 +50,10 @@ const LordInfoPanel = (props: any) => {
   const lord: any = characters.data.find((char: any) => char.cqi === props.cqi);
   const faction = useFaction(lord?.faction);
 
+  const [selecteAddCqi, setSelectedAddCqi] = useState<number | undefined>();
+  const onClickAdd = () => setSelectedAddCqi(lord.cqi);
+  const onCloseAdd = () => setSelectedAddCqi(undefined);
+
   const [selectedDeleteCqi, setSelectedDeleteCqi] = useState<number | undefined>();
   const onClickDelete = () => setSelectedDeleteCqi(lord.cqi);
   const onCloseDelete = () => setSelectedDeleteCqi(undefined);
@@ -43,6 +61,18 @@ const LordInfoPanel = (props: any) => {
   const [selectedAddAncillaryCqi, setSelectedAddAncillaryCqi] = useState<number | undefined>();
   const onClickAddAncillary = () => setSelectedAddAncillaryCqi(lord.cqi);
   const onCloseAddAncillary = () => setSelectedAddAncillaryCqi(undefined);
+
+  const [selectedAddTraitCqi, setSelectedAddTraitCqi] = useState<number | undefined>();
+  const onClickAddTrait = () => setSelectedAddTraitCqi(lord.cqi);
+  const onCloseAddTrait = () => setSelectedAddTraitCqi(undefined);
+
+  const [experienceCqi, setExperienceCqi] = useState<number | undefined>();
+  const onClickAddExp = () => setExperienceCqi(lord.cqi);
+  const onCloseAddExp = () => setExperienceCqi(undefined);
+
+  const [immortalCqi, setImmortalCqi] = useState<number | undefined>();
+  const onClickSetImmortal = () => setImmortalCqi(lord.cqi);
+  const onCloseSetImmortal = () => setImmortalCqi(undefined);
 
   React.useEffect(() => {
     if (!lord) {
@@ -84,22 +114,34 @@ const LordInfoPanel = (props: any) => {
   ];
 
   const actions = [
+    ['Add experience', <KeyboardArrowUpIcon />, onClickAddExp],
+    ['Add unit to army', <PersonAdd />, onClickAdd],
     ['Kill character', <Delete />, onClickDelete],
     ['Replenish action points', <RotateLeft />, onClickReplenish],
     ['Reset skill points', <SettingsBackupRestore />, onClickReset],
     ['Set camera position', <ControlCamera />, onClickCamera],
     ['Add ancillary/item', <AddBox />, onClickAddAncillary],
+    ['Add trait', <AddCircle />, onClickAddTrait],
+    ['Set immortality', <Star />, onClickSetImmortal],
   ] as [string, any, any][];
 
   return (
     <div className={classes.root}>
-      <List dense subheader={<ListSubheader disableSticky>Lord</ListSubheader>}>
+      <Toolbar className={classes.toolbar}>
+        <Typography className={classes.title}>Lord</Typography>
+        <IconButton edge="end" onClick={() => setSelectedObject(null)}>
+          <Close />
+        </IconButton>
+      </Toolbar>
+
+      <List dense>
         {fields.map(([label, value]) => (
           <ListItem key={label}>
             <ListItemText primary={label} secondary={value} />
           </ListItem>
         ))}
       </List>
+
       <Divider />
       <List subheader={<ListSubheader disableSticky>Actions</ListSubheader>}>
         {actions.map(([label, icon, onClick]) => (
@@ -112,13 +154,29 @@ const LordInfoPanel = (props: any) => {
         ))}
       </List>
 
+      <LordDialogAddUnit
+        cqi={selecteAddCqi}
+        onClose={onCloseAdd}
+      />
       <LordDeleteDialog
         cqi={selectedDeleteCqi}
         onClose={onCloseDelete}
       />
       <LordAddAncillaryDialog
-         cqi={selectedAddAncillaryCqi}
-         onClose={onCloseAddAncillary}
+        cqi={selectedAddAncillaryCqi}
+        onClose={onCloseAddAncillary}
+      />
+      <CharacterAddTraitDialog
+        cqi={selectedAddTraitCqi}
+        onClose={onCloseAddTrait}
+      />
+      <CharacterAddExperienceDialog
+        cqi={experienceCqi}
+        onClose={onCloseAddExp}
+      />
+      <CharacterSetImmortalDialog
+        cqi={immortalCqi}
+        onClose={onCloseSetImmortal}
       />
     </div>
   );

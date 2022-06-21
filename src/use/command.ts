@@ -122,6 +122,14 @@ export function useCommand() {
         const type = 'force_add_ancillary';
         return queueCommand({ ...args, type });
       },
+      forceAddTrait(args: any) {
+        const type = 'force_add_trait';
+        return queueCommand({ ...args, type });
+      },
+      addForeignSlotSetToRegionForFaction(args: any) {
+        const type = 'add_foreign_slot_set_to_region_for_faction';
+        return queueCommand({ ...args, type });
+      },
     };
   }, [queueCommand]);
 }

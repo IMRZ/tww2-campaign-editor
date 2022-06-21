@@ -16,6 +16,7 @@ import HeroDialogCreateUnique from './hero/HeroDialogCreateUnique';
 import TreasuryModifyDialog from './global/TreasuryModifyDialog';
 import DiplomacyDialog from './global/DiplomacyDialog';
 import AddAncillaryFactionDialog from './global/AddAncillaryFactionDialog';
+import PooledResourceDialog from './global/PooledResource/PooledResourceDialog';
 
 function Main() {
   const campaign = useCampaignMap();
@@ -37,6 +38,7 @@ function Main() {
       <TreasuryModifyDialog />
       <DiplomacyDialog />
       <AddAncillaryFactionDialog />
+      <PooledResourceDialog />
     </>
   );
 }

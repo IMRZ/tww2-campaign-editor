@@ -7,21 +7,33 @@ import {
   ListItemText,
   ListItemIcon,
   Divider,
+  Toolbar,
+  Typography,
 } from '@material-ui/core';
-import { Transform, NotInterested, Equalizer, LocationCity } from '@material-ui/icons';
+import { Transform, NotInterested, Equalizer, LocationCity, HomeWork } from '@material-ui/icons';
 import RegionTransferDialog from './RegionTransferDialog';
 import RegionAbandonDialog from './RegionAbandonDialog';
 import RegionCorruptionDialog from './RegionCorruptionDialog';
 import SettlementLevelDialog from './SettlementLevelDialog';
 import SettlementEditDialog from './SettlementEditDialog';
+import RegionForeignSlotCreate from './RegionForeignSlotCreate';
 import { useQueryData } from '../../use/util';
 import { useFaction } from '../../use/common';
 
+import { IconButton } from '@material-ui/core';
+import { Close } from '@material-ui/icons';
+import { useStoreActions } from '../../store';
+
 const useStyles = makeStyles((theme) => ({
   root: {
-    '& > *': {
-      marginBottom: theme.spacing(2),
-    },
+    position: 'relative',
+    overflowX: 'hidden',
+  },
+  toolbar: {
+    padding: theme.spacing(0, 2),
+  },
+  title: {
+    flex: 1,
   },
 }));
 
@@ -40,6 +52,7 @@ const SettlementInfoPanel = (props: any) => {
   const [regionCorruptionOpen, setRegionCorruptionOpen] = React.useState(false);
   const [settlementLevelOpen, setSettlementLevelOpen] = React.useState(false);
   const [settlementEditOpen, setSettlementEditOpen] = React.useState(false);
+  const [foreignSlotCreateOpen, setForeignSlotCreateOpen] = React.useState(false);
 
   const fields = [
     ['Name', `${region.name}, ${region.province.name}`],
@@ -54,11 +67,21 @@ const SettlementInfoPanel = (props: any) => {
     [<Equalizer />, 'Set province corruption', () => setRegionCorruptionOpen(true)],
     [<LocationCity />, 'Set settlement level', () => setSettlementLevelOpen(true)],
     [<LocationCity />, 'Edit settlement', () => setSettlementEditOpen(true)],
+    [<HomeWork />, 'Create undercity/pirate cove', () => setForeignSlotCreateOpen(true)],
   ] as any[];
+
+  const setSelectedObject = useStoreActions((actions) => actions.game.setSelectedObject);
 
   return (
     <div className={classes.root}>
-      <List dense subheader={<ListSubheader disableSticky>Settlement</ListSubheader>}>
+      <Toolbar className={classes.toolbar}>
+        <Typography className={classes.title}>Settlement</Typography>
+        <IconButton edge="end" onClick={() => setSelectedObject(null)}>
+          <Close />
+        </IconButton>
+      </Toolbar>
+
+      <List dense>
         {fields.map(([label, value]) => (
           <ListItem key={label}>
             <ListItemText primary={label} secondary={value} />
@@ -102,6 +125,11 @@ const SettlementInfoPanel = (props: any) => {
         open={settlementEditOpen}
         regionKey={region.key}
         onClose={() => setSettlementEditOpen(false)}
+      />
+      <RegionForeignSlotCreate
+        open={foreignSlotCreateOpen}
+        regionCqi={region.cqi}
+        onClose={() => setForeignSlotCreateOpen(false)}
       />
     </div>
   )
